@@ -4,6 +4,7 @@ import { useRef } from 'react'
 import Link from 'next/link'
 import { motion, useInView } from 'framer-motion'
 import CoachingCompareTable from '@/components/CoachingCompareTable'
+import { coachingProducts } from '@/lib/coachingData'
 
 /* ── 공통 fade-up ── */
 function FadeUp({
@@ -55,21 +56,20 @@ const oneHour: Product = {
   id: '1hour',
   badge: null,
   name: '1시간 · 원포인트 퀵 피드백',
-  price: '100,000 KRW',
+  price: '25,000 KRW',
   copy: '가장 빠르고 확실한 자가 진단, 티어 상승의 실마리를 찾다',
-  desc: '시간이 없거나 핵심 문제점만 정확히 파악하고 싶은 분을 위한 코스. 전문 코치의 시각으로 플레이의 핵심 문제를 날카롭게 진단합니다.',
-  color: '#0066ff',
+  desc: '핵심 문제점만 정확히 파악하고 싶은 분을 위한 코스. 전문 코치의 시각으로 플레이의 핵심 문제를 날카롭게 진단합니다.',
+  color: '#f5c842',
   whatYouGet: [
     '인지하지 못했던 나쁜 습관과 실수 즉시 파악',
     '방향 없는 반복 게임에서 탈출',
     '가장 시급한 개선 우선순위 설정',
   ],
   roadmap: [
-    { label: '01', desc: '실력 진단 (10분) — 질문 및 리플레이를 통한 현재 상태 파악' },
-    { label: '02', desc: '핵심 이론 (10분) — 티어에 맞는 영웅 역할군 및 FPS 기본기' },
-    { label: '03', desc: '밀착 피드백 (10분) — 변수 창출 및 포지셔닝 교정' },
-    { label: '04', desc: '실전 적용 (10분) — 피드백 내용 인게임 즉시 실행' },
-    { label: '05', desc: '마무리 및 플랜 (20분) — 연습 방향성 제시 및 일정 조율' },
+    { label: '01', desc: "실력 진단 — 질문 및 리플레이를 통한 현재 상태 파악" },
+    { label: '02', desc: '핵심 이론 — 티어에 맞는 영웅 역할군 및 FPS 기본기' },
+    { label: '03', desc: '밀착 피드백 — 변수 창출 및 포지셔닝 교정' },
+    { label: '04', desc: '실전 적용 — 피드백 내용 인게임 즉시 실행' },
   ],
 }
 
@@ -77,21 +77,20 @@ const twoHour: Product = {
   id: '2hour',
   badge: null,
   name: '2시간 · 딥다이브 실전 집중 코칭',
-  price: '180,000 KRW',
+  price: '45,000 KRW',
   copy: '이론을 넘어 실전 감각까지, 코치와 함께하는 120분의 변화',
   desc: '배운 내용을 실전에서 직접 적용하고 즉각적인 피드백을 받는 심화 코스. 단순한 피드백을 넘어 이기는 방법을 체득합니다.',
-  color: '#0066ff',
+  color: '#f5c842',
   whatYouGet: [
     '실시간 피드백을 통한 즉각적인 인게임 플레이 개선',
     '상황별 대처 능력과 전략적 사고방식 확립',
     '단순 피드백을 넘어선 실전 감각 체득',
   ],
   roadmap: [
-    { label: '01', desc: '정밀 진단 (20분) — 녹화 영상 및 리플레이 다각도 분석' },
-    { label: '02', desc: '심화 이론 (10분) — 조합별 상성과 맵 이해도' },
-    { label: '03', desc: '맞춤 피드백 (10분) — 에임, 무빙, 습관 개인별 교정' },
-    { label: '04', desc: '실전 라이브 (60분) — 실시간 게임 플레이 및 즉각 리플레이 피드백' },
-    { label: '05', desc: '정리 및 Q&A (20분) — 단계별 연습 플랜 수립' },
+    { label: '01', desc: '실력 진단 — 질문 및 리플레이를 통한 현재 상태 파악' },
+    { label: '02', desc: '심화 이론 — 조합별 상성과 맵 이해도' },
+    { label: '03', desc: '맞춤 피드백 — 에임, 무빙, 습관 개인별 교정' },
+    { label: '04', desc: '실전 적용 — 피드백 내용 인게임 즉시 실행' },
   ],
 }
 
@@ -99,19 +98,19 @@ const short: Product = {
   id: 'short',
   badge: null,
   name: '단기 속성 · 2주 집중 성장 패키지',
-  price: '270,000 KRW',
+  price: '120,000 KRW',
   copy: '점검과 교정의 반복, 단기 속성으로 티어를 뒤집다',
   desc: '수업 후 혼자 연습하고 다시 점검받는 체계적인 시스템. 1회성 강의보다 높은 지식 습득률과 유지력을 보장합니다.',
-  color: '#0066ff',
+  color: '#f5c842',
   whatYouGet: [
     '중간 점검을 통한 잘못된 연습 방향 방지',
     '연습 과정의 궁금증 즉시 해결',
     '1회성 강의 대비 높은 지식 습득률과 유지력',
   ],
   roadmap: [
-    { label: '01', desc: '1회차 (120분) — 현재 실력 파악 및 1단계 연습 방향 설정' },
-    { label: '02', desc: '중간 피드백 (30분) — 리플레이 분석을 통한 연습 진행도 체크 (녹화본 제공)' },
-    { label: '03', desc: '2회차 (120분) — 추가 문제점 보완 및 상위 단계 전략 전수' },
+    { label: '01', desc: '실력 진단 — 질문 및 리플레이를 통한 현재 상태 파악' },
+    { label: '02', desc: '중간 피드백 — 리플레이 분석을 통한 연습 진행도 체크 (녹화본 제공)' },
+    { label: '03', desc: '맞춤 피드백 — 추가 문제점 보완 및 상위 단계 전략 전수' },
     { label: '04', desc: '상시 케어 — 수업 기간 중 언제든 메시지로 질문 가능' },
   ],
 }
@@ -120,10 +119,10 @@ const monthly: Product = {
   id: 'monthly',
   badge: 'POPULAR',
   name: '한달 집중 · 올인원 프로 매니지먼트',
-  price: '1,200,000 KRW',
+  price: '175,000 KRW',
   copy: '티어 수직 상승, 리그급 코칭으로 다시 태어나는 한 달',
   desc: '한 달간 전담 코치의 밀착 관리를 받는 프리미엄 코스. 실력은 물론 게임을 보는 시각 자체가 달라집니다.',
-  color: '#a855f7',
+  color: '#86efac',
   whatYouGet: [
     '브론즈→다이아, 마스터→그마 실제 성공 사례 다수',
     '오버워치에 대한 깊은 통찰력 확보',
@@ -131,10 +130,9 @@ const monthly: Product = {
   ],
   roadmap: [
     { label: '01', desc: '주 1회 2시간 실시간 코칭 — 매주 새로운 목표 설정 및 심화 강의' },
-    { label: '02', desc: '주 1회 리플레이 피드백 — 연습 결과물 정밀 체크 (녹화본 제공)' },
-    { label: '03', desc: '24시간 Q&A — 수업 외 시간에도 언제든 질문 가능' },
-    { label: '04', desc: '맞춤형 커리큘럼 — 에임, 조합, 맵별 플레이 개인 로드맵 제공' },
-    { label: '05', desc: '유동적 스케줄 — 한 달 내 미완료 시 편의에 맞춰 끝까지 진행' },
+    { label: '02', desc: '24시간 Q&A — 수업 외 시간에도 언제든 질문 가능' },
+    { label: '03', desc: '맞춤형 커리큘럼 — 에임, 조합, 맵별 플레이 개인 로드맵 제공' },
+    { label: '04', desc: '유동적 스케줄 — 한 달 내 미완료 시 편의에 맞춰 여유있는 진행' },
   ],
 }
 
@@ -142,10 +140,10 @@ const groupClass: Product = {
   id: 'group',
   badge: null,
   name: '그룹 특강 · 1:N 팀워크 & 전략 마스터 클래스',
-  price: '50,000 KRW (인당)',
+  price: '기본(2인) 3.5만 / 인원 추가 당 +1만',
   copy: '혼자서는 못 깨는 한계, 팀게임의 진짜 재미를 알려드립니다',
   desc: '팀 플레이의 정수를 배우고 싶은 분을 위한 그룹 코스. 개인 피지컬을 넘어 팀 합을 맞추는 법을 익힙니다.',
-  color: '#0066ff',
+  color: '#f5c842',
   whatYouGet: [
     '실전 커뮤니케이션 능력 향상',
     '조합 시너지 및 맵별 맞춤 전략 습득',
@@ -154,9 +152,8 @@ const groupClass: Product = {
   roadmap: [
     { label: '01', desc: '그룹 실력 진단 및 포지션 배분 — 개개인 성향 파악 후 최적 역할 부여' },
     { label: '02', desc: '팀 플레이 핵심 이론 — 조합별 승리 플랜, 궁극기 사이클 강의' },
-    { label: '03', desc: '스크림 / 빠른 대전 실전 훈련 — 이론 기반 실전 훈련 (실시간 오더 피드백)' },
-    { label: '04', desc: '그룹 리플레이 분석 — 한타 단위 포커싱 및 진형 피드백' },
-    { label: '05', desc: 'Q&A 및 팀 과제 부여 — 다음 세션까지 팀 연습 목표 설정' },
+    { label: '03', desc: '실전 훈련 — 이론 기반 실전 훈련 (실시간 오더 피드백)' },
+    { label: '04', desc: 'Q&A 및 팀 과제 부여 — 다음 세션까지 팀 연습 목표 설정' },
   ],
 }
 
@@ -164,10 +161,10 @@ const guarantee: Product = {
   id: 'guarantee',
   badge: 'GUARANTEE',
   name: '티어 보장 · 목표 달성 무제한 책임 코칭',
-  price: '1,500,000 KRW~',
+  price: '상담 후 결정',
   copy: '목표 티어까지, 횟수 제한 없이 끝까지 책임집니다',
   desc: '원하는 티어에 도달할 때까지 추가 비용 없이 무제한 코칭을 제공합니다. 단, 성실한 참여와 과제 수행이 필수입니다.',
-  color: '#0066ff',
+  color: '#a78bfa',
   whatYouGet: [
     '목표 티어 달성 시까지 추가 비용 없이 무제한 피드백',
     '슬럼프와 멘탈까지 책임지는 1:1 전담 관리',
@@ -175,8 +172,8 @@ const guarantee: Product = {
   ],
   roadmap: [
     { label: '01', desc: '극딜 진단 및 목표 설정 — 현재 상태 냉정 평가 및 현실적 도달 기간 설정' },
-    { label: '02', desc: '무제한 실시간 & 리플레이 코칭 — 스케줄에 맞춰 문제점 반복 교정' },
-    { label: '03', desc: '멘탈 & 폼 관리 (상시) — 연패 및 슬럼프 시 실시간 케어' },
+    { label: '02', desc: '무제한 실시간 코칭 — 스케줄에 맞춰 문제점 반복 교정' },
+    { label: '03', desc: '멘탈 & 폼 관리 — 연패 및 슬럼프 시 실시간 케어' },
     { label: '04', desc: '단계별 맞춤 과제 — 완벽 마스터 전까지 다음 단계 미진행 원칙' },
   ],
 }
@@ -185,10 +182,10 @@ const pro: Product = {
   id: 'pro',
   badge: 'PRO',
   name: '프로 양성 · OWCS 데뷔 엘리트 코스',
-  price: '500,000 KRW~',
+  price: '390,000 KRW~',
   copy: '단순한 랭커가 아닌, 진짜 프로를 위한 리그급 하드 트레이닝',
   desc: 'Florida Mayhem, Toronto Defiant 출신 코치가 직접 전수하는 프로씬 1급 노하우. 트라이아웃 통과부터 1군 데뷔까지 도와드립니다.',
-  color: '#f5c842',
+  color: '#38bdf8',
   whatYouGet: [
     '프로씬에서 요구하는 전술/전략 및 디테일 완벽 장착',
     '실제 프로팀 스크림 방식 및 트라이아웃 대비 모의 훈련',
@@ -304,21 +301,102 @@ export default function CoachingDetailPage({ params }: { params: { id: string } 
           <p className="text-base text-white/65 italic mb-2 leading-snug">"{product.copy}"</p>
           <p className="text-sm text-white/40 leading-relaxed mb-8">{product.desc}</p>
 
-          {/* 가격 카드 */}
-          <div
-            className="inline-block px-6 py-5"
-            style={{
-              background: '#0f1118',
-              border: `1px solid ${product.color}30`,
-              clipPath:
-                'polygon(12px 0%,100% 0%,100% calc(100% - 12px),calc(100% - 12px) 100%,0% 100%,0% 12px)',
-              boxShadow: `0 0 28px ${product.color}0e`,
-            }}
-          >
-            <p className="text-[10px] text-white/35 tracking-widest uppercase mb-1.5">가격</p>
-            <p className="text-3xl font-black" style={{ color: product.color }}>
-              {product.price}
-            </p>
+          {/* 가격 카드 + 스펙 타임라인 */}
+          <div className="flex flex-col sm:flex-row items-start gap-5 sm:gap-8">
+
+            {/* 좌: 가격 카드 */}
+            <div
+              className="px-6 py-5 shrink-0"
+              style={{
+                background: '#0f1118',
+                border: `1px solid ${product.color}30`,
+                clipPath:
+                  'polygon(12px 0%,100% 0%,100% calc(100% - 12px),calc(100% - 12px) 100%,0% 100%,0% 12px)',
+                boxShadow: `0 0 28px ${product.color}0e`,
+              }}
+            >
+              <p className="text-[10px] text-white/35 tracking-widest uppercase mb-1.5">가격</p>
+              <p className="text-3xl font-black" style={{ color: product.color }}>
+                {product.price}
+              </p>
+            </div>
+
+            {/* 우: 스펙 타임라인 + 버튼 */}
+            <div className="flex flex-col gap-3 flex-1">
+              {/* 스펙 타임라인 */}
+              {(() => {
+                const ID_MAP: Record<string, string> = { monthly: 'month', '1hour': '60', '2hour': '120' }
+                const dataKey = ID_MAP[params.id] ?? params.id
+                const specData = coachingProducts[dataKey as keyof typeof coachingProducts]
+                if (!specData) return null
+
+                const SPEC_LABELS: Record<string, string> = {
+                  duration: '수업 시간',
+                  replay: '리플레이',
+                  qna: 'Q&A',
+                  report: '리포트',
+                }
+                const items = (Object.entries(specData.spec) as [string, string][]).filter(
+                  ([, v]) => v !== '—'
+                )
+                if (items.length === 0) return null
+
+                return (
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-0">
+                    {items.flatMap(([key, value], i) => {
+                      const nodes = []
+                      if (i > 0) {
+                        nodes.push(
+                          <span
+                            key={`sep-${i}`}
+                            className="hidden sm:inline-block mx-4"
+                            style={{ color: 'rgba(255,255,255,0.2)', fontSize: 14, userSelect: 'none' }}
+                          >
+                            →
+                          </span>
+                        )
+                      }
+                      nodes.push(
+                        <div key={key} className="flex flex-col gap-1">
+                          <span
+                            style={{
+                              fontSize: 11,
+                              color: 'rgba(255,255,255,0.5)',
+                              fontWeight: 600,
+                              letterSpacing: '0.06em',
+                            }}
+                          >
+                            {SPEC_LABELS[key] ?? key}
+                          </span>
+                          <span style={{ fontSize: 16, fontWeight: 700, color: '#ffffff' }}>
+                            {value}
+                          </span>
+                        </div>
+                      )
+                      return nodes
+                    })}
+                  </div>
+                )
+              })()}
+
+              {/* 버튼 — 우측 정렬 */}
+              <div className="flex justify-start sm:justify-end">
+                <a
+                  href="/contact"
+                  className="inline-flex items-center gap-3 px-6 py-3.5 bg-[#0066ff] text-white font-bold text-sm tracking-wide hover:bg-[#0052cc] active:scale-[0.98] transition-all duration-300"
+                  style={{
+                    clipPath:
+                      'polygon(10px 0%,100% 0%,100% calc(100% - 10px),calc(100% - 10px) 100%,0% 100%,0% 10px)',
+                    boxShadow: '0 0 28px rgba(0,102,255,0.35)',
+                  }}
+                >
+                  <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057.1 18.08.113 18.1.127 18.115a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z" />
+                  </svg>
+                  코칭 신청 &amp; Contact
+                </a>
+              </div>
+            </div>
           </div>
         </FadeUp>
 
@@ -447,11 +525,6 @@ export default function CoachingDetailPage({ params }: { params: { id: string } 
             {[
               {
                 num: '01',
-                title: '1시간 / 2시간 특강',
-                items: ['수업 전 결제 방식으로 진행됩니다.'],
-              },
-              {
-                num: '02',
                 title: '환불 기준 (단기 / 한달 / 티어보장 / 프로양성)',
                 items: [
                   '강의 시작 24시간 전까지 — 전액 환불',
@@ -459,7 +532,7 @@ export default function CoachingDetailPage({ params }: { params: { id: string } 
                 ],
               },
               {
-                num: '03',
+                num: '02',
                 title: '부분 환불 (단기 / 한달 특강)',
                 items: [
                   '수강 50% 미만 — 잔여 비율에 따라 부분 환불 가능',
@@ -467,7 +540,7 @@ export default function CoachingDetailPage({ params }: { params: { id: string } 
                 ],
               },
               {
-                num: '04',
+                num: '03',
                 title: '그룹 수업',
                 items: [
                   '중도 이탈 시 환불 불가',
@@ -475,7 +548,7 @@ export default function CoachingDetailPage({ params }: { params: { id: string } 
                 ],
               },
               {
-                num: '05',
+                num: '04',
                 title: '일정 변경',
                 items: [
                   '강의 시작 24시간 전까지 요청 시 1회 가능',
@@ -483,12 +556,12 @@ export default function CoachingDetailPage({ params }: { params: { id: string } 
                 ],
               },
               {
-                num: '06',
+                num: '05',
                 title: '지각 및 기술적 문제',
                 items: ['수강생 귀책(기기/네트워크/지각) — 보충 없이 잔여 시간만 진행'],
               },
               {
-                num: '07',
+                num: '06',
                 title: '강사 귀책',
                 items: ['강사 사정으로 취소 시 — 일정 재조정 또는 100% 환불'],
               },

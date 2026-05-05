@@ -2,33 +2,49 @@
 
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
+import { coachingProducts } from '@/lib/coachingData'
 
-const PRODUCTS = [
-  { id: 'pro',       name: '프로 지망' },
-  { id: 'guarantee', name: '티어 보장' },
-  { id: 'monthly',   name: '한달 특강' },
-  { id: 'short',     name: '단기 특강' },
-  { id: '2hour',     name: '2시간 특강' },
-  { id: '1hour',     name: '1시간 특강' },
-  { id: 'group',     name: '그룹 수업' },
-]
+// 페이지 라우트 id → coachingData 키 매핑
+const ID_MAP: Record<string, keyof typeof coachingProducts> = {
+  pro:       'pro',
+  guarantee: 'guarantee',
+  monthly:   'month',
+  short:     'short',
+  '2hour':   '120',
+  '1hour':   '60',
+  group:     'group',
+}
+
+const COLUMNS = [
+  { routeId: 'pro' },
+  { routeId: 'guarantee' },
+  { routeId: 'monthly' },
+  { routeId: 'short' },
+  { routeId: '2hour' },
+  { routeId: '1hour' },
+  { routeId: 'group' },
+] as const
 
 const ROWS = [
   { key: 'duration', label: '기간' },
   { key: 'replay',   label: '리플레이 분석' },
-  { key: 'discord',  label: '디스코드 Q&A' },
+  { key: 'qna',      label: '디스코드 Q&A' },
   { key: 'report',   label: '리포트' },
   { key: 'price',    label: '가격' },
-]
+] as const
 
-const DATA: Record<string, Record<string, string>> = {
-  pro:       { duration: '개인 맞춤',         replay: '개인 맞춤',   discord: '기간 내 무제한',   report: '매 세션 PDF',  price: '500,000' },
-  guarantee: { duration: '개인 맞춤',      replay: '개인 맞춤',   discord: '기간 내 무제한',   report: '매 세션 PDF',  price: '상담 후 결정' },
-  monthly:   { duration: '4회 각 120분',   replay: '미제공',   discord: '기간 내 무제한',   report: '매 세션 PDF', price: '200,000' },
-  short:     { duration: '2회 각 120분', replay: '코드 2개',  discord: '기간 내 무제한', report: '매 세션 PDF',    price: '120,000' },
-  '2hour':   { duration: '단회 120분',  replay: '—',     discord: '—',            report: '세션 후 1회', price: '45,000' },
-  '1hour':   { duration: '단회 60분',   replay: '—',     discord: '—',            report: '세션 후 1회',   price: '25,000' },
-  group:     { duration: '단회',        replay: '—',         discord: '—',            report: '—',  price: '35,000~' },
+function getCell(routeId: string, key: string): string {
+  const dataKey = ID_MAP[routeId]
+  if (!dataKey) return '—'
+  const product = coachingProducts[dataKey]
+  if (key === 'price') return product.price
+  return product.spec[key as keyof typeof product.spec] ?? '—'
+}
+
+function getName(routeId: string): string {
+  const dataKey = ID_MAP[routeId]
+  if (!dataKey) return routeId
+  return coachingProducts[dataKey].name
 }
 
 function CellValue({ value, isPrice }: { value: string; isPrice: boolean }) {
@@ -79,16 +95,16 @@ export default function CoachingCompareTable({ currentProduct }: { currentProduc
 
       {/* 테이블 */}
       <div className="overflow-x-auto">
-        <div className="min-w-[860px]">
+        <div>
           {/* 헤더 행 */}
           <div className="flex">
-            <div className="w-[138px] shrink-0" />
-            {PRODUCTS.map((p) => {
-              const isCurrent = p.id === currentProduct
+            <div className="w-[80px] shrink-0" />
+            {COLUMNS.map(({ routeId }) => {
+              const isCurrent = routeId === currentProduct
               return (
                 <div
-                  key={p.id}
-                  className="flex-1 min-w-[100px] px-2 py-3 text-center"
+                  key={routeId}
+                  className="flex-1 min-w-[84px] px-1 py-3 text-center"
                   style={
                     isCurrent
                       ? {
@@ -117,7 +133,7 @@ export default function CoachingCompareTable({ currentProduct }: { currentProduc
                     className="text-[11px] font-bold"
                     style={{ color: isCurrent ? '#0066ff' : 'rgba(255,255,255,0.32)' }}
                   >
-                    {p.name}
+                    {getName(routeId)}
                   </p>
                 </div>
               )
@@ -134,7 +150,7 @@ export default function CoachingCompareTable({ currentProduct }: { currentProduc
                 style={!isLast ? { borderBottom: '1px solid rgba(255,255,255,0.04)' } : {}}
               >
                 {/* 행 레이블 */}
-                <div className="w-[138px] shrink-0 px-3 py-3.5 flex items-center">
+                <div className="w-[80px] shrink-0 px-2 py-3.5 flex items-center">
                   <span
                     className="text-[11px] font-semibold"
                     style={{
@@ -149,13 +165,13 @@ export default function CoachingCompareTable({ currentProduct }: { currentProduc
                 </div>
 
                 {/* 데이터 셀 */}
-                {PRODUCTS.map((p) => {
-                  const isCurrent = p.id === currentProduct
-                  const value = DATA[p.id]?.[row.key] ?? '—'
+                {COLUMNS.map(({ routeId }) => {
+                  const isCurrent = routeId === currentProduct
+                  const value = getCell(routeId, row.key)
                   return (
                     <div
-                      key={p.id}
-                      className="flex-1 min-w-[100px] px-2 py-3.5 flex items-center justify-center"
+                      key={routeId}
+                      className="flex-1 min-w-[84px] px-1 py-3.5 flex items-center justify-center"
                       style={
                         isCurrent
                           ? {

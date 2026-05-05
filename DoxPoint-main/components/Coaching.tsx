@@ -227,36 +227,36 @@ const PREMIUM_PRODUCTS = [
     id: 'pro',
     badge: 'PRO',
     name: '프로 지망',
-    price: '500,000원~',
+    price: '390,000원~',
     desc: '프로게이머를 목표로 하는 집중 코칭',
-    color: '#f5c842',
+    color: '#38bdf8',
     image: '/class/프로.png',
   },
   {
     id: 'guarantee',
     badge: 'GUARANTEE',
     name: '티어 보장',
-    price: '300,000원~',
+    price: '상담 후 결정',
     desc: '목표 티어 달성까지 무제한 수업',
-    color: '#0066ff',
+    color: '#a78bfa',
     image: '/class/티어.png',
   },
   {
     id: 'monthly',
     badge: 'POPULAR',
     name: '한달 특강',
-    price: '200,000원',
+    price: '175,000원',
     desc: '한 달 집중 케어 코칭',
-    color: '#a855f7',
+    color: '#86efac',
     image: '/class/한달.png',
   },
 ]
 
 const BASIC_PRODUCTS = [
-  { id: '1hour', name: '1시간 특강', price: '50,000원', desc: '빠른 원포인트 레슨', image: '/class/1시간.png' },
-  { id: '2hour', name: '2시간 특강', price: '90,000원', desc: '심화 분석 코칭', image: '/class/2시간.png' },
-  { id: 'short', name: '단기 특강', price: '150,000원', desc: '집중 단기 케어', image: '/class/단기특강_큰용량.jpg' },
-  { id: 'group', name: '1:N 그룹 수업', price: '30,000원', desc: '소규모 그룹 코칭', image: '/class/그룹특강.png' },
+  { id: '1hour', name: '1시간 특강', price: '25,000원', desc: '빠른 원포인트 레슨', image: '/class/1시간.png' },
+  { id: '2hour', name: '2시간 특강', price: '45,000원', desc: '심화 분석 코칭', image: '/class/2시간.png' },
+  { id: 'short', name: '단기 특강', price: '120,000원', desc: '집중 단기 케어', image: '/class/단기특강_큰용량.jpg' },
+  { id: 'group', name: '1:N 그룹 수업', price: '35,000원~', desc: '소규모 그룹 코칭', image: '/class/그룹특강.png' },
 ]
 
 function PremiumCard({
@@ -416,7 +416,7 @@ function BasicCard({
           </div>
           <p className="typo-body-sm text-white/40">{product.desc}</p>
           <div className="mt-auto pt-2 border-t border-white/[0.06]">
-            <span className="text-lg font-black text-[#0066ff]">{product.price}</span>
+            <span className="text-lg font-black text-[#f5c842]">{product.price}</span>
           </div>
         </div>
       </div>
