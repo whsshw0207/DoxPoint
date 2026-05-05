@@ -1,0 +1,35 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run *)",
+      "Bash(git init *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git branch *)",
+      "Bash(git remote *)",
+      "Bash(git push *)",
+      "Bash(git pull *)",
+      "Bash(git checkout *)",
+      "Bash(npm install *)",
+      "Bash(npx tsc *)",
+      "mcp__ide__getDiagnostics",
+      "Bash(node *)",
+      "Bash(pkill -f \"next dev\")",
+      "Bash(gh api *)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "PowerShell(npm run dev)",
+      "PowerShell(& cmd /c \"npm run dev\" 2>&1)",
+      "PowerShell(& cmd /c \"npm install\" 2>&1)",
+      "PowerShell(& cmd /c \"npm run dev\")",
+      "PowerShell(Stop-Process -Name \"node\" -Force -Confirm:$false -ErrorAction SilentlyContinue)",
+      "PowerShell(& cmd /c \"cd /d C:\\\\Users\\\\����\\\\Documents\\\\GitHub\\\\DoxPoint && git show HEAD:components/HeroGraphic.tsx\")",
+      "PowerShell(& cmd /c \"where git\")",
+      "PowerShell(& \"C:\\\\Program Files\\\\Git\\\\bin\\\\git.exe\" -C \"C:\\\\Users\\\\����\\\\Documents\\\\GitHub\\\\DoxPoint\" show HEAD:components/HeroGraphic.tsx)",
+      "PowerShell($git = \"C:\\\\Users\\\\ㅎㅅ\\\\AppData\\\\Local\\\\GitHubDesktop\\\\app-3.5.8\\\\resources\\\\app\\\\git\\\\cmd\\\\git.exe\"; cd \"c:\\\\Users\\\\ㅎㅅ\\\\Documents\\\\GitHub\\\\DoxPoint\"; & $git add .; & $git commit -m \"EmpathyBanner 이미지 교체 전 백업\")",
+      "PowerShell($git = \"C:\\\\Users\\\\ㅎㅅ\\\\AppData\\\\Local\\\\GitHubDesktop\\\\app-3.5.8\\\\resources\\\\app\\\\git\\\\cmd\\\\git.exe\"; cd \"c:\\\\Users\\\\ㅎㅅ\\\\Documents\\\\GitHub\\\\DoxPoint\"; & $git add .; & $git commit -m \"리뷰 슬라이더 수정 전 백업\")",
+      "PowerShell($git = \"C:\\\\Users\\\\ㅎㅅ\\\\AppData\\\\Local\\\\GitHubDesktop\\\\app-3.5.8\\\\resources\\\\app\\\\git\\\\cmd\\\\git.exe\"; cd \"c:\\\\Users\\\\ㅎㅅ\\\\Documents\\\\GitHub\\\\DoxPoint\"; & $git add .; & $git commit -m \"영웅 메이트 매핑 수정 전 백업\")",
+      "WebFetch(domain:api.github.com)"
+    ]
+  }
+}
