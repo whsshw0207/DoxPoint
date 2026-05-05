@@ -84,7 +84,7 @@ function CoachIntro() {
                 sizes="(min-width: 1024px) 384px, 100vw"
                 className="object-cover"
                 style={{ opacity: 1, zIndex: 1 }}
-                unoptimized={true} 
+                unoptimized={true}
             />
             <span className="absolute top-3 left-3 w-5 h-5 border-t-2 border-l-2 border-[#0066ff]" style={{ zIndex: 2 }} />
             <span className="absolute top-3 right-3 w-5 h-5 border-t-2 border-r-2 border-[#0066ff]" style={{ zIndex: 2 }} />

@@ -108,7 +108,19 @@ function TierImage({ tier, size }: { tier: string; size: number }) {
   const [error, setError] = useState(false);
   const filename = tierImageName(tier);
   if (!filename || error) return <TierBadgeFallback tier={tier} size={size} />;
-  return <Image src={`/tier/${filename}.webp`} alt={tier} width={size} height={size} quality={100} onError={() => setError(true)} style={{ objectFit: "contain", display: "block", flexShrink: 0 }} />;
+
+  return (
+      <Image
+          src={`/tier/${filename}.webp`}
+          alt={tier}
+          width={size}
+          height={size}
+          quality={100}
+          unoptimized={true} // 👉 엑스박스 방지용! 잊지 말고 꼭 넣어.
+          onError={() => setError(true)}
+          style={{ objectFit: "contain", display: "block", flexShrink: 0 }}
+      />
+  );
 }
 
 function StarRating({ rating }: { rating: number }) {
