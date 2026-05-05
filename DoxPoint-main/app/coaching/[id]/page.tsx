@@ -195,10 +195,10 @@ const pro: Product = {
     '코치진과 팀원에게 어필하는 인게임 커뮤니케이션 스킬',
   ],
   roadmap: [
-    { label: '01', desc: '프로의 시선 장착 — 맵 활용, 템포 조절, 변수 창출 심화 이론' },
-    { label: '02', desc: '스크림 VOD 정밀 분석 — 스크림 환경 플레이 1프레임 단위 피드백' },
+    { label: '01', desc: '프로의 시선 장착 — 조합과 본인 역할의 이해, 맵 활용, 템포 조절, 변수 창출 심화 이론' },
+    { label: '02', desc: '스크림 정밀 분석 — 스크림 환경 플레이 1프레임 단위 피드백' },
     { label: '03', desc: '트라이아웃 모의고사 — 실제 프로팀 테스트 환경 압박 훈련' },
-    { label: '04', desc: '1:1 프로페셔널 멘토링 — 마인드셋, 자기 관리, 슬럼프 극복 노하우' },
+    { label: '04', desc: '전문적인 1:1 멘토링 — 마인드셋, 자기 관리, 슬럼프 극복 노하우' },
   ],
 }
 
@@ -380,12 +380,13 @@ export default function CoachingDetailPage({ params }: { params: { id: string } 
               </h2>
             </FadeUp>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
               {product.roadmap.map((step, i) => (
                 <FadeUp key={i} delay={i * 0.08}>
                   <div
-                    className="relative overflow-hidden p-5 bg-[#0f1118] border border-white/[0.07] hover:border-white/[0.14] transition-colors duration-300"
+                    className="relative overflow-hidden p-5 bg-[#0f1118] border border-white/[0.07] hover:border-white/[0.14] transition-colors duration-300 flex flex-col justify-start"
                     style={{
+                      minHeight: 200,
                       clipPath:
                         'polygon(10px 0%,100% 0%,100% calc(100% - 10px),calc(100% - 10px) 100%,0% 100%,0% 10px)',
                     }}
@@ -396,13 +397,20 @@ export default function CoachingDetailPage({ params }: { params: { id: string } 
                         background: `linear-gradient(to bottom, ${product.color}90, ${product.color}28)`,
                       }}
                     />
-                    <span
-                      className="text-[9px] font-black tracking-[0.3em] uppercase block mb-2"
-                      style={{ color: product.color }}
-                    >
-                      {step.label}
-                    </span>
-                    <p className="text-sm text-white/65 leading-relaxed">{step.desc}</p>
+                    {(() => {
+                      const idx = step.desc.indexOf(' — ')
+                      const title = idx !== -1 ? step.desc.slice(0, idx) : step.desc
+                      const body = idx !== -1 ? step.desc.slice(idx + 3) : null
+                      return (
+                        <>
+                          <div style={{ display: 'flex', alignItems: 'baseline', gap: 8 }}>
+                            <span style={{ fontSize: 13, fontWeight: 900, color: '#f5c842', flexShrink: 0 }}>{step.label}</span>
+                            <p style={{ fontSize: 15, fontWeight: 700, color: '#ffffff', lineHeight: 1.3 }}>{title}</p>
+                          </div>
+                          {body && <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.6)', marginTop: 16, lineHeight: 1.5 }}>{body}</p>}
+                        </>
+                      )
+                    })()}
                   </div>
                 </FadeUp>
               ))}
@@ -440,7 +448,7 @@ export default function CoachingDetailPage({ params }: { params: { id: string } 
               {
                 num: '01',
                 title: '1시간 / 2시간 특강',
-                items: ['수업 후 결제 방식으로 진행됩니다.'],
+                items: ['수업 전 결제 방식으로 진행됩니다.'],
               },
               {
                 num: '02',

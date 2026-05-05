@@ -18,18 +18,17 @@ const ROWS = [
   { key: 'replay',   label: '리플레이 분석' },
   { key: 'discord',  label: '디스코드 Q&A' },
   { key: 'report',   label: '리포트' },
-  { key: 'badge',    label: '수료 배지' },
   { key: 'price',    label: '가격' },
 ]
 
 const DATA: Record<string, Record<string, string>> = {
-  pro:       { duration: '8주',         replay: '매 세션',   discord: '24/7 무제한',   report: '매 세션 PDF', badge: 'O', price: '2,000,000 KRW' },
-  guarantee: { duration: '무제한',      replay: '매 세션',   discord: '24/7 무제한',   report: '매 세션 PDF', badge: 'O', price: '1,500,000 KRW' },
-  monthly:   { duration: '4주 8세션',   replay: '매 세션',   discord: '24/7 무제한',   report: '매 세션 PDF', badge: 'O', price: '1,200,000 KRW' },
-  short:     { duration: '3회 각 70분', replay: '회당 2판',  discord: '기간 내 무제한', report: '회당 1회',    badge: '—', price: '270,000 KRW' },
-  '2hour':   { duration: '단회 130분',  replay: '3~5판',     discord: '3일',            report: '세션 후 1회', badge: '—', price: '180,000 KRW' },
-  '1hour':   { duration: '단회 70분',   replay: '1~2판',     discord: '1일',            report: '간이',        badge: '—', price: '100,000 KRW' },
-  group:     { duration: '단회',        replay: '—',         discord: '1일',            report: '—',           badge: '—', price: '50,000 KRW' },
+  pro:       { duration: '개인 맞춤',         replay: '개인 맞춤',   discord: '기간 내 무제한',   report: '매 세션 PDF',  price: '500,000' },
+  guarantee: { duration: '개인 맞춤',      replay: '개인 맞춤',   discord: '기간 내 무제한',   report: '매 세션 PDF',  price: '상담 후 결정' },
+  monthly:   { duration: '4회 각 120분',   replay: '미제공',   discord: '기간 내 무제한',   report: '매 세션 PDF', price: '200,000' },
+  short:     { duration: '2회 각 120분', replay: '코드 2개',  discord: '기간 내 무제한', report: '매 세션 PDF',    price: '120,000' },
+  '2hour':   { duration: '단회 120분',  replay: '—',     discord: '—',            report: '세션 후 1회', price: '45,000' },
+  '1hour':   { duration: '단회 60분',   replay: '—',     discord: '—',            report: '세션 후 1회',   price: '25,000' },
+  group:     { duration: '단회',        replay: '—',         discord: '—',            report: '—',  price: '35,000~' },
 }
 
 function CellValue({ value, isPrice }: { value: string; isPrice: boolean }) {
