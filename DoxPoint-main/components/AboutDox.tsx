@@ -78,12 +78,13 @@ function CoachIntro() {
             style={{ clipPath: 'polygon(16px 0%,100% 0%,100% calc(100% - 16px),calc(100% - 16px) 100%,0% 100%,0% 16px)' }}
           >
             <Image
-              src="/etc/png_DOX_Headshot.png"
-              alt="DOX 코치"
-              fill
-              sizes="(min-width: 1024px) 384px, 100vw"
-              className="object-cover"
-              style={{ opacity: 1, zIndex: 1 }}
+                src="/etc/png_DOX_Headshot.png"
+                alt="DOX 코치"
+                fill
+                sizes="(min-width: 1024px) 384px, 100vw"
+                className="object-cover"
+                style={{ opacity: 1, zIndex: 1 }}
+                unoptimized={true} 
             />
             <span className="absolute top-3 left-3 w-5 h-5 border-t-2 border-l-2 border-[#0066ff]" style={{ zIndex: 2 }} />
             <span className="absolute top-3 right-3 w-5 h-5 border-t-2 border-r-2 border-[#0066ff]" style={{ zIndex: 2 }} />
