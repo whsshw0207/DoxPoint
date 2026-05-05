@@ -184,13 +184,13 @@ const guarantee: Product = {
 const pro: Product = {
   id: 'pro',
   badge: 'PRO',
-  name: '프로 양성 · OWCS & 리거 데뷔 엘리트 코스',
-  price: '2,000,000 KRW~',
+  name: '프로 양성 · OWCS 데뷔 엘리트 코스',
+  price: '500,000 KRW~',
   copy: '단순한 랭커가 아닌, 진짜 프로를 위한 리그급 하드 트레이닝',
-  desc: 'Florida Mayhem, Toronto Defiant, Gen.G Academy 출신 코치가 직접 전수하는 프로씬 1급 노하우. 트라이아웃 통과부터 1군 데뷔까지 책임집니다.',
+  desc: 'Florida Mayhem, Toronto Defiant 출신 코치가 직접 전수하는 프로씬 1급 노하우. 트라이아웃 통과부터 1군 데뷔까지 도와드립니다.',
   color: '#f5c842',
   whatYouGet: [
-    '프로씬에서 요구하는 최상위 매크로 및 디테일 완벽 장착',
+    '프로씬에서 요구하는 전술/전략 및 디테일 완벽 장착',
     '실제 프로팀 스크림 방식 및 트라이아웃 대비 모의 훈련',
     '코치진과 팀원에게 어필하는 인게임 커뮤니케이션 스킬',
   ],

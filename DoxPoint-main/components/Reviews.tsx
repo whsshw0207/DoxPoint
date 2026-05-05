@@ -159,7 +159,7 @@ export default function Reviews() {
                   <div className="flex items-end justify-center gap-5">
                     <div className="flex flex-col items-center" style={{ gap: 0 }}>
                       <TierImage tier={r.fromTier} size={123} />
-                      <span className="text-[10px] font-bold" style={{ color: '#ffffff', marginTop: 0 }}>{r.fromTier}</span>
+                      <span className="text-[14px] font-bold" style={{ color: '#ffffff', marginTop: 0 }}>{r.fromTier}</span>
                     </div>
                     <svg width={24} height={48} viewBox="0 0 24 48" fill="none"
                       style={{ flexShrink: 0, alignSelf: 'center' }}>
@@ -181,10 +181,10 @@ export default function Reviews() {
                     </svg>
                     <div className="flex flex-col items-center" style={{ gap: 0 }}>
                       <TierImage tier={r.toTier} size={148} />
-                      <span className="text-[10px] font-bold" style={{ color: '#ffffff', marginTop: 0 }}>{r.toTier}</span>
+                      <span className="text-[14px] font-bold" style={{ color: '#ffffff', marginTop: 0 }}>{r.toTier}</span>
                     </div>
                   </div>
-                  <p className="typo-body-sm text-gray-400 flex-1" style={{ display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}>{r.review}</p>
+                  <p className="typo-body-sm text-gray-400 flex-1" style={{ marginTop: 7, display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}>{r.review}</p>
                   <p className="typo-body-sm text-white font-semibold">{r.name}</p>
                 </div>
               </div>
