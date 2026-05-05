@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { coachingProducts } from '@/lib/coachingData'
 
 /* ──────────────────────────────────────────────
    Types
@@ -22,32 +23,39 @@ const FAQ_RULES: { keywords: string[]; answer: string }[] = [
   {
     keywords: ['가격', '얼마', '비용', '요금', '금액'],
     answer:
-      '코칭 상품은 70분 특강 / 130분 특강 / 단기 특강 / 한달 특강 4가지가 있어요.\n정확한 가격은 COACHING 섹션에서 확인하세요! 😊',
+      '현재 수업 가격은 아래와 같아요 😊\n- 1시간 특강: 25,000원\n- 2시간 특강: 45,000원\n- 단기 특강: 120,000원\n- 한달 특강: 175,000원\n- 티어 보장: 상담 후 결정\n- 프로 양성: 390,000원~\n- 그룹 수업: 35,000원~\n자세한 내용은 COACHING 섹션에서 확인하세요!',
   },
   {
     keywords: ['신청', '예약', '등록', '구매', '결제'],
     answer:
-      "신청은 상단의 '코칭 신청 & Contact' 버튼을 통해 디스코드로 문의주시면 돼요!",
+      "수강 신청은 상단의 '코칭 신청 & Contact' 버튼을 누르거나\n/contact 페이지에서 신청폼을 작성해주세요! 😊",
   },
   {
     keywords: ['경력', '코치', 'dox', '누구', '강사', '프로필', '소개'],
     answer:
-      'DOX 코치는 Florida Mayhem, Toronto Defiant 등 프로팀 코칭 9년 경력을 보유하고 있어요.\n브론즈부터 프로까지 지도 경험이 있습니다!',
+      'DOX 코치는 Florida Mayhem, Toronto Defiant 등\n오버워치 리그, OWCS 프로팀 코칭 9년+ 경력을 보유하고 있어요.\n브론즈부터 챔피언, 프로까지 지도 경험이 있습니다!',
   },
   {
     keywords: ['환불', '취소', '환급'],
-    answer: '첫 코칭 후 48시간 내 요청 시 전액 환불 가능합니다.',
+    answer:
+      '수업 시작 24시간 전까지 전액 환불 가능하며\n이후 취소 및 노쇼는 환불이 불가합니다.',
   },
   {
-    keywords: ['시간', '언제', '스케줄', '일정', '가능'],
-    answer: '코칭 가능 시간은 디스코드로 문의주시면 안내드려요!',
+    keywords: ['시간', '언제', '스케줄', '일정'],
+    answer:
+      "수업 일정은 코치님과 직접 조율해요.\n'코칭 신청 & Contact' 버튼으로 문의주시면 가능한 일정 안내드립니다!",
+  },
+  {
+    keywords: ['수업', '강의', '종류', '상품'],
+    answer:
+      '현재 운영 중인 수업은 총 7가지예요 😊\n\n[프리미엄]\n• 프로 양성 — 프로팀 데뷔를 목표로 하는 엘리트 코스\n• 티어 보장 — 목표 티어 달성까지 무제한 책임 코칭\n• 한달 특강 — 한 달 집중 케어\n\n[기본]\n• 1시간 특강 — 원포인트 퀵 피드백\n• 2시간 특강 — 딥다이브 실전 집중 코칭\n• 단기 특강 — 2주 집중 성장 패키지\n• 그룹 수업 — 1:N 팀워크 마스터 클래스',
   },
 ]
 
 const WELCOME_MESSAGE: Message = {
   id: 0,
   role: 'bot',
-  text: '안녕하세요! DOX.POINT 코칭 문의 챗봇이에요 😊\n궁금한 점을 입력해주세요.\n(가격 / 신청 / 경력 / 환불 / 시간)',
+  text: '안녕하세요! DOX.POINT 코칭 문의 챗봇이에요 😊\n궁금한 점을 입력해주세요.\n\n(가격 / 신청 / 수업종류 / 경력 / 환불 / 일정)',
   showDiscord: false,
 }
 
@@ -88,7 +96,9 @@ function TypingDots() {
 function DiscordButton() {
   return (
     <a
-      href="/contact"
+      href="https://discord.com/invite/aGbf5sVv24"
+      target="_blank"
+      rel="noopener noreferrer"
       className="mt-2 inline-flex items-center gap-2 px-3 py-1.5 text-xs font-bold text-white bg-[#5865F2] hover:bg-[#4752C4] transition-colors"
       style={{ clipPath: 'polygon(5px 0%, 100% 0%, 100% calc(100% - 5px), calc(100% - 5px) 100%, 0% 100%, 0% 5px)' }}
     >
@@ -197,7 +207,7 @@ function ChatWindow({ onClose }: { onClose: () => void }) {
   }
 
   /* Quick-reply chips */
-  const CHIPS = ['가격', '신청 방법', '코치 경력', '환불', '시간']
+  const CHIPS = ['가격', '신청', '수업종류', '경력', '환불', '일정']
 
   return (
     <motion.div
