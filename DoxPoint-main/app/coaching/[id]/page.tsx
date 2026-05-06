@@ -370,40 +370,46 @@ export default function CoachingDetailPage({ params }: { params: { id: string } 
                 if (items.length === 0) return null
 
                 return (
-                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-0">
-                    {items.flatMap(([key, value], i) => {
-                      const nodes = []
-                      if (i > 0) {
-                        nodes.push(
-                          <span
-                            key={`sep-${i}`}
-                            className="hidden sm:inline-block mx-4"
-                            style={{ color: 'rgba(255,255,255,0.2)', fontSize: 14, userSelect: 'none' }}
-                          >
-                            →
-                          </span>
-                        )
-                      }
-                      nodes.push(
+                  <>
+                    {/* 모바일: 2열 그리드 */}
+                    <div className="grid grid-cols-2 gap-x-4 gap-y-3 sm:hidden">
+                      {items.map(([key, value]) => (
                         <div key={key} className="flex flex-col gap-1">
-                          <span
-                            style={{
-                              fontSize: 11,
-                              color: 'rgba(255,255,255,0.5)',
-                              fontWeight: 600,
-                              letterSpacing: '0.06em',
-                            }}
-                          >
+                          <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', fontWeight: 600, letterSpacing: '0.06em' }}>
                             {SPEC_LABELS[key] ?? key}
                           </span>
-                          <span style={{ fontSize: 16, fontWeight: 700, color: '#ffffff' }}>
-                            {value}
-                          </span>
+                          <span style={{ fontSize: 16, fontWeight: 700, color: '#ffffff' }}>{value}</span>
                         </div>
-                      )
-                      return nodes
-                    })}
-                  </div>
+                      ))}
+                      {items.length % 2 !== 0 && <div />}
+                    </div>
+                    {/* 데스크탑: 기존 가로 나열 유지 */}
+                    <div className="hidden sm:flex items-center">
+                      {items.flatMap(([key, value], i) => {
+                        const nodes = []
+                        if (i > 0) {
+                          nodes.push(
+                            <span
+                              key={`sep-${i}`}
+                              className="mx-4"
+                              style={{ color: 'rgba(255,255,255,0.2)', fontSize: 14, userSelect: 'none' }}
+                            >
+                              →
+                            </span>
+                          )
+                        }
+                        nodes.push(
+                          <div key={key} className="flex flex-col gap-1">
+                            <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', fontWeight: 600, letterSpacing: '0.06em' }}>
+                              {SPEC_LABELS[key] ?? key}
+                            </span>
+                            <span style={{ fontSize: 16, fontWeight: 700, color: '#ffffff' }}>{value}</span>
+                          </div>
+                        )
+                        return nodes
+                      })}
+                    </div>
+                  </>
                 )
               })()}
 

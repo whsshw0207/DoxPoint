@@ -186,7 +186,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative flex items-center min-h-[100dvh] pt-16 overflow-hidden bg-bg"
+      className="relative flex items-center min-h-[70vh] lg:min-h-[100dvh] pt-16 overflow-hidden bg-bg"
     >
       {/* Animated background */}
       <ParticleGrid />
@@ -198,11 +198,11 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-12 lg:py-0">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center min-h-[calc(100dvh-4rem)]">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-6 lg:py-0">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center min-h-[calc(70vh-4rem)] lg:min-h-[calc(100dvh-4rem)]">
 
           {/* ── Left: Copy + CTA ── */}
-          <div className="flex flex-col justify-center py-8 lg:py-16">
+          <div className="flex flex-col justify-center py-4 lg:py-16">
 
             {/* Badge */}
             <motion.div
@@ -334,7 +334,7 @@ export default function Hero() {
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.5, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="relative flex items-center justify-end py-8"
+            className="relative flex items-center justify-end py-2 lg:py-8"
           >
             <div className="w-[95%]">
               <HeroGraphic accent="#0066ff" intensity="high" />

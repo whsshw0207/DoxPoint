@@ -392,7 +392,7 @@ function EmpathyBanner() {
         style={{width:'100%', height:'auto', display:'block', objectFit:'contain', background:'transparent'}}
       />
       <div style={{borderTop:'1px solid rgba(0,102,255,0.2)', paddingTop:'16px', textAlign:'center'}}>
-        <p className="text-xl sm:text-[36px]" style={{color:'rgba(255,255,255,0.8)', lineHeight:'1.4'}}>
+        <p className="text-lg sm:text-[36px]" style={{color:'rgba(255,255,255,0.8)', lineHeight:'1.4'}}>
           적보다 아군 때문에 열받은 적 있으시죠?<br />{' '}
           <strong style={{color:'#ffffff'}}>게임 시야 확장</strong>으로{' '}
           <strong style={{color:'#0066ff'}}>솔로 캐리 + 팀 승리 모두</strong> 가능하게 해드립니다.
