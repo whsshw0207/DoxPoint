@@ -2,6 +2,7 @@
 
 import { useRef, useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 import { motion, useInView } from 'framer-motion'
 import Image from 'next/image'
 
@@ -271,7 +272,7 @@ function PremiumCard({
     <FadeUp delay={index * 0.1} className="h-full">
       <div
         onClick={() => router.push(`/coaching/${product.id}`)}
-        className="group relative h-full cursor-pointer overflow-hidden bg-[#0a0c12] transition-all duration-300 flex flex-col hover:scale-[1.02] hover:-translate-y-1"
+        className="group relative h-full md:cursor-pointer overflow-hidden bg-[#0a0c12] transition-all duration-300 flex flex-col hover:scale-[1.02] hover:-translate-y-1 pointer-events-none md:pointer-events-auto"
         style={{
           clipPath:
             'polygon(14px 0%,100% 0%,100% calc(100% - 14px),calc(100% - 14px) 100%,0% 100%,0% 14px)',
@@ -352,7 +353,7 @@ function PremiumCard({
             <span className="text-xl font-black" style={{ color: product.color }}>
               {product.price}
             </span>
-            <span className="typo-button text-white/35 group-hover:text-white/65 transition-colors flex items-center gap-2">
+            <Link href={`/coaching/${product.id}`} className="typo-button text-white/35 group-hover:text-white/65 transition-colors flex items-center gap-2 pointer-events-auto">
               자세히 보기
               <span className="w-6 h-6 rounded-full flex items-center justify-center bg-white/10 group-hover:bg-white/20 group-hover:translate-x-0.5 transition-all duration-300">
                 <svg
@@ -365,7 +366,7 @@ function PremiumCard({
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                 </svg>
               </span>
-            </span>
+            </Link>
           </div>
         </div>
       </div>
@@ -385,7 +386,7 @@ function BasicCard({
     <FadeUp delay={index * 0.08} className="h-full">
       <div
         onClick={() => router.push(`/coaching/${product.id}`)}
-        className="group relative cursor-pointer bg-[#0d0f18] border border-white/[0.07] hover:border-[#0066ff]/30 hover:bg-[#0f1120] transition-all duration-300 flex flex-col h-full overflow-hidden hover:scale-[1.02] hover:-translate-y-0.5"
+        className="group relative md:cursor-pointer bg-[#0d0f18] border border-white/[0.07] hover:border-[#0066ff]/30 hover:bg-[#0f1120] transition-all duration-300 flex flex-col h-full overflow-hidden hover:scale-[1.02] hover:-translate-y-0.5 pointer-events-none md:pointer-events-auto"
         style={{
           clipPath:
             'polygon(10px 0%,100% 0%,100% calc(100% - 10px),calc(100% - 10px) 100%,0% 100%,0% 10px)',
@@ -406,15 +407,17 @@ function BasicCard({
         <div className="flex-1 flex flex-col gap-2 p-4 min-w-0">
           <div className="flex items-start justify-between gap-2">
             <h4 className="text-base font-bold text-white leading-snug">{product.name}</h4>
-            <svg
-              className="w-4 h-4 text-white/20 group-hover:text-[#0066ff]/60 transition-colors shrink-0 mt-0.5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-            </svg>
+            <Link href={`/coaching/${product.id}`} className="pointer-events-auto shrink-0 mt-0.5 p-1 -m-1">
+              <svg
+                className="w-4 h-4 text-white/20 group-hover:text-[#0066ff]/60 transition-colors"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </Link>
           </div>
           <p className="typo-body-sm text-white/40">{product.desc}</p>
           <div className="mt-auto pt-2 border-t border-white/[0.06]">

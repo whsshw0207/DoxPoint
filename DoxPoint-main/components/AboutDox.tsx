@@ -375,12 +375,14 @@ function ValueCards() {
 ══════════════════════════════════════════ */
 function EmpathyBanner() {
   return (
-    <div style={{
-      position: 'relative',
-      padding: '24px',
-      margin: '24px 0',
-      background: 'rgba(0,102,255,0.03)'
-    }}>
+    <div
+      className="px-2 py-6 sm:px-6"
+      style={{
+        position: 'relative',
+        margin: '24px 0',
+        background: 'rgba(0,102,255,0.03)'
+      }}
+    >
       <div style={{
         position: 'absolute', left: 0, top: 0, bottom: 0, width: '2px',
         background: 'linear-gradient(to bottom, transparent, #0066ff 30%, #0066ff 70%, transparent)',
