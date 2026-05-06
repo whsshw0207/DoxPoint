@@ -330,7 +330,7 @@ export default function CoachingDetailPage({ params }: { params: { id: string } 
           <p className="text-sm text-white/40 leading-relaxed mb-8">{product.desc}</p>
 
           {/* 가격 카드 + 스펙 타임라인 */}
-          <div className="flex flex-col sm:flex-row items-start gap-5 sm:gap-8">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-start gap-5 sm:gap-8">
 
             {/* 좌: 가격 카드 */}
             <div
@@ -372,9 +372,9 @@ export default function CoachingDetailPage({ params }: { params: { id: string } 
                 return (
                   <>
                     {/* 모바일: 2열 그리드 */}
-                    <div className="grid grid-cols-2 gap-x-4 gap-y-3 sm:hidden">
+                    <div className="grid grid-cols-2 gap-3 sm:hidden">
                       {items.map(([key, value]) => (
-                        <div key={key} className="flex flex-col gap-1">
+                        <div key={key} className="flex flex-col items-center justify-center gap-1 py-3 bg-white/[0.03] border border-white/[0.06]">
                           <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', fontWeight: 600, letterSpacing: '0.06em' }}>
                             {SPEC_LABELS[key] ?? key}
                           </span>
