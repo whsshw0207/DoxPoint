@@ -414,7 +414,7 @@ export default function CoachingDetailPage({ params }: { params: { id: string } 
               })()}
 
               {/* 버튼 — 우측 정렬 */}
-              <div className="flex justify-start sm:justify-end">
+              <div className="flex justify-end">
                 <a
                   href="/contact"
                   className="inline-flex items-center gap-3 px-6 py-3.5 bg-[#0066ff] text-white font-bold text-sm tracking-wide hover:bg-[#0052cc] active:scale-[0.98] transition-all duration-300"
@@ -643,6 +643,7 @@ export default function CoachingDetailPage({ params }: { params: { id: string } 
 
         {/* ── CTA ── */}
         <FadeUp>
+          <div className="flex justify-end sm:block">
           <a
             href="/contact"
             className="inline-flex items-center gap-3 px-8 py-4 bg-[#0066ff] text-white font-bold text-sm tracking-wide hover:bg-[#0052cc] active:scale-[0.98] transition-all duration-300"
@@ -657,6 +658,7 @@ export default function CoachingDetailPage({ params }: { params: { id: string } 
             </svg>
             코칭 신청 &amp; Contact
           </a>
+          </div>
         </FadeUp>
       </div>
     </main>
