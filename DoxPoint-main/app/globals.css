@@ -212,3 +212,15 @@ body {
 [class*="text-[64px]"] {
   font-size: 66px !important;
 }
+
+/* Mobile typography overrides */
+@media (max-width: 768px) {
+  .typo-subtitle {
+    font-size: 0.875rem;
+  }
+}
+
+/* Chat chips scroll — hide scrollbar */
+.chips-scroll::-webkit-scrollbar {
+  display: none;
+}

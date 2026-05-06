@@ -201,6 +201,34 @@ const pro: Product = {
 
 const PRODUCTS: Product[] = [pro, guarantee, monthly, short, twoHour, oneHour, groupClass]
 
+/* ──────────────────────────────────────────────
+   커리큘럼 카드
+─────────────────────────────────────────────── */
+function StepCard({ step, color }: { step: RoadmapItem; color: string }) {
+  const idx = step.desc.indexOf(' — ')
+  const title = idx !== -1 ? step.desc.slice(0, idx) : step.desc
+  const body = idx !== -1 ? step.desc.slice(idx + 3) : null
+  return (
+    <div
+      className="relative overflow-hidden p-5 bg-[#0f1118] border border-white/[0.07] hover:border-white/[0.14] transition-colors duration-300 flex flex-col justify-start"
+      style={{
+        minHeight: 200,
+        clipPath: 'polygon(10px 0%,100% 0%,100% calc(100% - 10px),calc(100% - 10px) 100%,0% 100%,0% 10px)',
+      }}
+    >
+      <div
+        className="absolute left-0 top-0 bottom-0 w-[3px]"
+        style={{ background: `linear-gradient(to bottom, ${color}90, ${color}28)` }}
+      />
+      <div style={{ display: 'flex', alignItems: 'baseline', gap: 8 }}>
+        <span style={{ fontSize: 13, fontWeight: 900, color: '#f5c842', flexShrink: 0 }}>{step.label}</span>
+        <p style={{ fontSize: 15, fontWeight: 700, color: '#ffffff', lineHeight: 1.3 }}>{title}</p>
+      </div>
+      {body && <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.6)', marginTop: 16, lineHeight: 1.5 }}>{body}</p>}
+    </div>
+  )
+}
+
 /* ══════════════════════════════════════════
    페이지
 ══════════════════════════════════════════ */
@@ -458,38 +486,28 @@ export default function CoachingDetailPage({ params }: { params: { id: string } 
               </h2>
             </FadeUp>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            {/* 모바일: 좌 2개 고정 / 우 나머지 (md 미만에서만) */}
+            <div className="flex md:hidden gap-3">
+              <div className="flex flex-col gap-3 flex-1">
+                {product.roadmap.slice(0, 2).map((step, i) => (
+                  <FadeUp key={i} delay={i * 0.08}>
+                    <StepCard step={step} color={product.color} />
+                  </FadeUp>
+                ))}
+              </div>
+              <div className="flex flex-col gap-3 flex-1">
+                {product.roadmap.slice(2).map((step, i) => (
+                  <FadeUp key={i + 2} delay={(i + 2) * 0.08}>
+                    <StepCard step={step} color={product.color} />
+                  </FadeUp>
+                ))}
+              </div>
+            </div>
+            {/* 데스크탑: 기존 그리드 그대로 유지 (md 이상) */}
+            <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-3">
               {product.roadmap.map((step, i) => (
                 <FadeUp key={i} delay={i * 0.08}>
-                  <div
-                    className="relative overflow-hidden p-5 bg-[#0f1118] border border-white/[0.07] hover:border-white/[0.14] transition-colors duration-300 flex flex-col justify-start"
-                    style={{
-                      minHeight: 200,
-                      clipPath:
-                        'polygon(10px 0%,100% 0%,100% calc(100% - 10px),calc(100% - 10px) 100%,0% 100%,0% 10px)',
-                    }}
-                  >
-                    <div
-                      className="absolute left-0 top-0 bottom-0 w-[3px]"
-                      style={{
-                        background: `linear-gradient(to bottom, ${product.color}90, ${product.color}28)`,
-                      }}
-                    />
-                    {(() => {
-                      const idx = step.desc.indexOf(' — ')
-                      const title = idx !== -1 ? step.desc.slice(0, idx) : step.desc
-                      const body = idx !== -1 ? step.desc.slice(idx + 3) : null
-                      return (
-                        <>
-                          <div style={{ display: 'flex', alignItems: 'baseline', gap: 8 }}>
-                            <span style={{ fontSize: 13, fontWeight: 900, color: '#f5c842', flexShrink: 0 }}>{step.label}</span>
-                            <p style={{ fontSize: 15, fontWeight: 700, color: '#ffffff', lineHeight: 1.3 }}>{title}</p>
-                          </div>
-                          {body && <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.6)', marginTop: 16, lineHeight: 1.5 }}>{body}</p>}
-                        </>
-                      )
-                    })()}
-                  </div>
+                  <StepCard step={step} color={product.color} />
                 </FadeUp>
               ))}
             </div>

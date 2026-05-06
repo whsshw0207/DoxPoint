@@ -315,6 +315,7 @@ function PremiumCard({
           <img
             src={product.image}
             alt={product.name}
+            loading="lazy"
             style={{ width: '100%', height: 'auto', objectFit: 'contain', display: 'block' }}
           />
         </div>
@@ -397,6 +398,7 @@ function BasicCard({
           <img
             src={product.image}
             alt={product.name}
+            loading="lazy"
             style={{ width: '100%', height: 'auto', objectFit: 'contain', display: 'block' }}
           />
         </div>

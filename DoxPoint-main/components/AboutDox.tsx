@@ -81,7 +81,10 @@ function CoachIntro() {
                 src="/etc/png_DOX_Headshot.png"
                 alt="DOX 코치"
                 fill
+                priority
                 sizes="(min-width: 1024px) 384px, 100vw"
+                placeholder="blur"
+                blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=="
                 className="object-cover"
                 style={{ opacity: 1, zIndex: 1 }}
                 unoptimized={true}
@@ -105,7 +108,7 @@ function CoachIntro() {
       </FadeUp>
 
       {/* 우 - State A: 타임라인 / State B: 텍스트 */}
-      <div className="relative min-h-[680px]">
+      <div className="relative min-h-[560px] sm:min-h-[680px]">
         {/* 수동 전환 버튼 */}
         <button
           onClick={() => setShowText(prev => !prev)}
@@ -123,7 +126,7 @@ function CoachIntro() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              className="absolute inset-0 flex flex-col justify-center pr-10"
+              className="absolute inset-0 flex flex-col justify-center pr-4 sm:pr-10"
             >
               {/* Header */}
               <div className="flex items-center gap-3 mb-6">
@@ -169,7 +172,7 @@ function CoachIntro() {
                         <span style={{ position: 'absolute', top: 0, right: 0, width: 12, height: 12, borderTop: `1px solid ${item.hudColor}`, borderRight: `1px solid ${item.hudColor}` }} />
                         <span style={{ position: 'absolute', bottom: 0, left: 0, width: 12, height: 12, borderBottom: `1px solid ${item.hudColor}`, borderLeft: `1px solid ${item.hudColor}` }} />
                         <span style={{ position: 'absolute', bottom: 0, right: 0, width: 12, height: 12, borderBottom: `1px solid ${item.hudColor}`, borderRight: `1px solid ${item.hudColor}` }} />
-                        <img src={item.logo} alt={item.team} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+                        <img src={item.logo} alt={item.team} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
                       </div>
                     )
                     const info = (
@@ -229,7 +232,7 @@ function CoachIntro() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              className="absolute inset-0 flex flex-col justify-center gap-5 pr-10"
+              className="absolute inset-0 flex flex-col justify-center gap-5 pr-4 sm:pr-10"
             >
               <div>
                 <SectionLabel text="About Dox" />
@@ -250,7 +253,7 @@ function CoachIntro() {
                 </div>
               </div>
 
-              <p className="typo-body text-white/55 border-l-2 border-[#0066ff]/40 pl-4">
+              <p className="text-xs sm:text-base leading-relaxed sm:leading-7 text-white/55 border-l-2 border-[#0066ff]/40 pl-4">
                 플로리다 메이헴, 토론토 디파이언트, 젠지 아카데미, 그리고 OWCS 프로팀까지.<br />
                 브론즈부터 챔피언, 프로 선수에 이르기까지 수많은 티어의 수강생들을 지도해 왔습니다.
                 <br /><br />
@@ -271,8 +274,8 @@ function CoachIntro() {
                       boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.06)',
                     }}
                   >
-                    <p className="text-lg font-black text-[#0066ff]">{s.value}</p>
-                    <p className="text-[14px] text-white/40 tracking-widest mt-0.5 uppercase">{s.label}</p>
+                    <p className="text-sm sm:text-lg font-black text-[#0066ff]">{s.value}</p>
+                    <p className="text-[11px] sm:text-[14px] text-white/40 tracking-widest mt-0.5 uppercase">{s.label}</p>
                   </div>
                 ))}
               </div>
@@ -385,10 +388,11 @@ function EmpathyBanner() {
       <img
         src="/etc/3인배너 수정.png"
         alt="배너"
+        loading="lazy"
         style={{width:'100%', height:'auto', display:'block', objectFit:'contain', background:'transparent'}}
       />
       <div style={{borderTop:'1px solid rgba(0,102,255,0.2)', paddingTop:'16px', textAlign:'center'}}>
-        <p style={{color:'rgba(255,255,255,0.8)', fontSize:'36px', lineHeight:'1.4'}}>
+        <p className="text-xl sm:text-[36px]" style={{color:'rgba(255,255,255,0.8)', lineHeight:'1.4'}}>
           적보다 아군 때문에 열받은 적 있으시죠?<br />{' '}
           <strong style={{color:'#ffffff'}}>게임 시야 확장</strong>으로{' '}
           <strong style={{color:'#0066ff'}}>솔로 캐리 + 팀 승리 모두</strong> 가능하게 해드립니다.

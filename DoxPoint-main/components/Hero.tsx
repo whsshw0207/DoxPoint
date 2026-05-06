@@ -312,6 +312,21 @@ export default function Hero() {
                 </motion.div>
               ))}
             </motion.div>
+
+            {/* Mobile scroll indicator */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: headlineDone ? 1 : 0 }}
+              transition={{ delay: 1.2, duration: 0.8 }}
+              className="flex sm:hidden flex-col items-center gap-2 mt-6"
+            >
+              <span className="typo-micro text-white/30">SCROLL</span>
+              <motion.div
+                animate={{ y: [0, 5, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+                className="w-px h-8 bg-gradient-to-b from-[#0066ff]/60 to-transparent"
+              />
+            </motion.div>
           </div>
 
           {/* ── Right: HeroGraphic ── */}
@@ -319,7 +334,7 @@ export default function Hero() {
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.5, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="relative hidden lg:flex items-center justify-end py-8"
+            className="relative flex items-center justify-end py-8"
           >
             <div className="w-[95%]">
               <HeroGraphic accent="#0066ff" intensity="high" />
@@ -332,12 +347,12 @@ export default function Hero() {
       {/* Bottom fade */}
       <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#0a0c12] to-transparent pointer-events-none" />
 
-      {/* Scroll indicator */}
+      {/* Scroll indicator — desktop only */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2, duration: 0.8 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden sm:flex flex-col items-center gap-2"
       >
         <span className="typo-micro text-white/30">Scroll</span>
         <motion.div

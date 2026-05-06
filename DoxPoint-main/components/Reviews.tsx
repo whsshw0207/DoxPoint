@@ -117,6 +117,9 @@ function TierImage({ tier, size }: { tier: string; size: number }) {
           height={size}
           quality={100}
           unoptimized={true} // 👉 엑스박스 방지용! 잊지 말고 꼭 넣어.
+          placeholder="blur"
+          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=="
+          sizes={`${size}px`}
           onError={() => setError(true)}
           style={{ objectFit: "contain", display: "block", flexShrink: 0 }}
       />
@@ -166,7 +169,7 @@ export default function Reviews() {
         <div className="overflow-hidden mb-6" style={{ WebkitMaskImage: "linear-gradient(90deg, transparent 0%, black 6%, black 94%, transparent 100%)", maskImage: "linear-gradient(90deg, transparent 0%, black 6%, black 94%, transparent 100%)" }}>
           <div className="marquee-track">
             {[...MARQUEE_REVIEWS, ...MARQUEE_REVIEWS].map((r, i) => (
-              <div key={i} className="shrink-0 mr-4" style={{ width: 430, height: 330 }}>
+              <div key={i} className="shrink-0 mr-4" style={{ width: 'clamp(320px, 88vw, 430px)', height: 330 }}>
                 <div className="w-full h-full px-6 pb-3 rounded-2xl flex flex-col gap-1" style={{ paddingTop: '2px', background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.07)", boxShadow: "inset 0 1px 0 rgba(255,255,255,0.10), 0 0 20px rgba(0,102,255,0.04)" }}>
                   <div className="flex items-end justify-center gap-5">
                     <div className="flex flex-col items-center" style={{ gap: 0 }}>
@@ -211,14 +214,25 @@ export default function Reviews() {
                 const isExpanded = expandedIdx === i;
                 return (
                   <motion.div key={`${page}-${i}`} variants={{ hidden: { opacity: 0, y: 12 }, visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] } } }} style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
-                    <div className="grid items-start py-2.5 px-1 gap-4 cursor-pointer transition-colors duration-150" style={{ gridTemplateColumns: "180px 80px 1fr", background: "transparent" }}
+                    <div className="py-2.5 px-1 cursor-pointer transition-colors duration-150" style={{ background: "transparent" }}
                       onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.background = "rgba(255,255,255,0.025)"; }}
                       onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.background = "transparent"; }}
                       onClick={() => setExpandedIdx(isExpanded ? null : i)}
                     >
-                      <p className="typo-body-sm text-white font-semibold leading-snug">{r.name}</p>
-                      <div className="pt-0.5"><StarRating rating={r.rating} /></div>
-                      <p className="typo-body-sm text-gray-400" style={isExpanded ? {} : { overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{r.review}</p>
+                      {/* Mobile card layout */}
+                      <div className="md:hidden">
+                        <div className="flex items-center gap-2 mb-1">
+                          <StarRating rating={r.rating} />
+                          <span className="typo-body-sm text-white/60 font-semibold">{r.name}</span>
+                        </div>
+                        <p className="typo-body-sm text-gray-400" style={isExpanded ? {} : { overflow: "hidden", display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical" as const }}>{r.review}</p>
+                      </div>
+                      {/* Desktop table layout */}
+                      <div className="hidden md:grid items-start gap-4" style={{ gridTemplateColumns: "180px 80px 1fr" }}>
+                        <p className="typo-body-sm text-white font-semibold leading-snug">{r.name}</p>
+                        <div className="pt-0.5"><StarRating rating={r.rating} /></div>
+                        <p className="typo-body-sm text-gray-400" style={isExpanded ? {} : { overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{r.review}</p>
+                      </div>
                     </div>
                   </motion.div>
                 );

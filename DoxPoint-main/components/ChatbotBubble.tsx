@@ -279,7 +279,7 @@ function ChatWindow({ onClose }: { onClose: () => void }) {
 
       {/* Quick replies */}
       <div className="px-3 pb-2 shrink-0">
-        <div className="flex gap-1.5 flex-wrap">
+        <div className="flex gap-1.5 overflow-x-auto chips-scroll" style={{ scrollbarWidth: 'none' }}>
           {CHIPS.map((chip) => (
             <button
               key={chip}
@@ -302,7 +302,7 @@ function ChatWindow({ onClose }: { onClose: () => void }) {
                 }, 0)
               }}
               disabled={isTyping}
-              className="px-2.5 py-1 text-[11px] font-semibold text-[#0066ff] border border-[#0066ff]/30 hover:border-[#0066ff]/60 hover:bg-[#0066ff]/10 disabled:opacity-40 disabled:cursor-not-allowed transition-all duration-200"
+              className="shrink-0 whitespace-nowrap px-2.5 py-1 text-[11px] font-semibold text-[#0066ff] border border-[#0066ff]/30 hover:border-[#0066ff]/60 hover:bg-[#0066ff]/10 disabled:opacity-40 disabled:cursor-not-allowed transition-all duration-200"
               style={{ clipPath: 'polygon(4px 0%, 100% 0%, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0% 100%, 0% 4px)' }}
             >
               {chip}
@@ -323,12 +323,12 @@ function ChatWindow({ onClose }: { onClose: () => void }) {
             onKeyDown={handleKey}
             disabled={isTyping}
             placeholder="메시지를 입력하세요..."
-            className="flex-1 bg-transparent px-3 py-3 text-sm text-white placeholder-white/25 outline-none disabled:opacity-50"
+            className="flex-1 min-w-0 bg-transparent px-3 py-3 text-sm text-white placeholder-white/25 outline-none disabled:opacity-50"
           />
           <button
             onClick={sendMessage}
             disabled={!input.trim() || isTyping}
-            className="mr-2 w-7 h-7 flex items-center justify-center bg-[#0066ff] disabled:opacity-30 disabled:cursor-not-allowed hover:bg-[#0052cc] active:scale-95 transition-all duration-200"
+            className="mr-2 w-7 h-7 shrink-0 flex items-center justify-center bg-[#0066ff] disabled:opacity-30 disabled:cursor-not-allowed hover:bg-[#0052cc] active:scale-95 transition-all duration-200"
             style={{ clipPath: 'polygon(4px 0%, 100% 0%, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0% 100%, 0% 4px)' }}
             aria-label="전송"
           >

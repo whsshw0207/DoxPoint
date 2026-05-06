@@ -82,9 +82,9 @@ export default function HeroGraphic({ accent = '#0066ff', intensity = 'high' }: 
   }, [])
 
   const floaters = [
-    { t: '狙撃',     x: 12,  y: 22,  s: 42, rot: -8,  cls: 'fl-jp',    delay: 0   },
+    { t: 'SNIPE',    x: 12,  y: 22,  s: 42, rot: -8,  cls: 'fl-jp',    delay: 0   },
     { t: 'BANG!',   x: 78,  y: 14,  s: 28, rot: 10,  cls: 'fl-pop',   delay: 0.4 },
-    { t: '力',      x: 86,  y: 66,  s: 72, rot: 6,   cls: 'fl-kanji', delay: 0.8 },
+    { t: 'POWER',   x: 86,  y: 66,  s: 72, rot: 6,   cls: 'fl-kanji', delay: 0.8 },
     { t: 'LOCK-ON', x: 8,   y: 70,  s: 14, rot: 0,   cls: 'fl-mono',  delay: 1.2 },
     { t: 'HEADSHOT',x: 72,  y: 82,  s: 13, rot: -4,  cls: 'fl-mono',  delay: 1.6 },
     { t: '—01',    x: 4,   y: 48,  s: 14, rot: 0,   cls: 'fl-mono',  delay: 0.2 },
