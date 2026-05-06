@@ -400,7 +400,7 @@ function EmpathyBanner() {
           <strong style={{color:'#ffffff'}}>게임 시야 확장</strong>으로{' '}
           <strong style={{color:'#0066ff'}}>솔로 캐리 + 팀 승리</strong>
           <br className="sm:hidden" />{' '}
-          <strong style={{color:'#0066ff'}}>모두</strong> 가능하게 해드립니다.
+          <strong style={{color:'#ffffff'}}>모두</strong> 가능하게 해드립니다.
         </p>
       </div>
     </div>
