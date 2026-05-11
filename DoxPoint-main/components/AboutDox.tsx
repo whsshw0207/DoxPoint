@@ -415,8 +415,17 @@ export default function AboutDox() {
     <section id="about" className="relative pt-[3.25rem] pb-24 md:pt-[4.875rem] md:pb-32 bg-bg overflow-hidden">
       <div className="absolute top-1/3 right-0 w-[500px] h-[500px] bg-[#0066ff] opacity-[0.03] blur-[120px] rounded-full pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24 md:space-y-32">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <CoachIntro />
+      </div>
+    </section>
+  )
+}
+
+export function CoachingPhilosophy() {
+  return (
+    <section className="relative pb-24 md:pb-32 bg-bg overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-3 md:gap-4">
           <ValueCards />
           <EmpathyBanner />
