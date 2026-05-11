@@ -14,8 +14,8 @@ export default function Home() {
       <GNB />
       <Hero />
       <AboutDox />
-      <Coaching />
       <Reviews />
+      <Coaching />
       <CTASection />
       <AiAgent />
       <FAQ />
