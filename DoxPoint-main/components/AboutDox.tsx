@@ -424,7 +424,7 @@ export default function AboutDox() {
 
 export function CoachingPhilosophy() {
   return (
-    <section className="relative pb-24 md:pb-32 bg-bg overflow-hidden">
+    <section className="relative pt-24 md:pt-32 pb-24 md:pb-32 bg-bg overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-3 md:gap-4">
           <ValueCards />
