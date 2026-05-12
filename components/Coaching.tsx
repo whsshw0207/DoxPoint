@@ -256,7 +256,7 @@ const BASIC_PRODUCTS = [
   { id: '1hour', name: '1시간 특강', price: '25,000원', desc: '빠른 원포인트 레슨', image: '/class/1시간.png' },
   { id: '2hour', name: '2시간 특강', price: '45,000원', desc: '심화 분석 코칭', image: '/class/2시간.png' },
   { id: 'short', name: '단기 특강', price: '120,000원', desc: '집중 단기 케어', image: '/class/단기특강_큰용량.jpg' },
-  { id: 'group', name: '1:N 그룹 수업', price: '35,000원~', desc: '소규모 그룹 코칭', image: '/class/그룹특강.png' },
+  { id: 'group', name: '1:N 그룹 수업', price: '25,000원~', originalPrice: '35,000원~', eventBadge: '5월 이벤트 할인', desc: '소규모 그룹 코칭', image: '/class/그룹특강.png' },
 ]
 
 function PremiumCard({
@@ -416,7 +416,25 @@ function BasicCard({
           </div>
           <p className="typo-body-sm text-white/40">{product.desc}</p>
           <div className="mt-auto pt-2 border-t border-white/[0.06]">
-            <span className="text-lg font-black text-[#f5c842]">{product.price}</span>
+            {product.eventBadge && (
+              <span
+                className="inline-block text-[9px] font-black tracking-[0.2em] px-2 py-1 mb-1.5"
+                style={{
+                  color: '#f97316',
+                  background: '#f9731618',
+                  border: '1px solid #f9731640',
+                  clipPath: 'polygon(4px 0%,100% 0%,100% calc(100% - 4px),calc(100% - 4px) 100%,0% 100%,0% 4px)',
+                }}
+              >
+                {product.eventBadge}
+              </span>
+            )}
+            <div className="flex items-baseline gap-2">
+              {product.originalPrice && (
+                <span className="text-sm font-bold text-white/30 line-through">{product.originalPrice}</span>
+              )}
+              <span className="text-lg font-black text-[#f5c842]">{product.price}</span>
+            </div>
           </div>
         </div>
       </div>

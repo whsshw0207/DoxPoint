@@ -4,7 +4,7 @@ import { useState, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import GNB from '@/components/GNB'
 
-const WEBHOOK_URL = 'https://discord.com/api/webhooks/1501129942656749748/qjy7PC4pa3ZUDWCWtGgg3gGyiHYkrl4oFQ5qXobCrpyBvz7-RE4KSwrrSRQrb7jWOQcp'
+const WEBHOOK_URL = 'https://discord.com/api/webhooks/1503673199236223038/JnyZaZ0GVk5IGbRlRKEwlQjpxhKs_7Va-BNx1uJHQmgvyu5dx9V3gptvcWSZ97DCk0MB'
 
 const LESSON_TYPES = ['1시간', '2시간', '단기', '한달', '그룹', '티어보장', '프로양성']
 

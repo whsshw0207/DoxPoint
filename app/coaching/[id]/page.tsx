@@ -41,6 +41,7 @@ interface Product {
   badge: string | null
   name: string
   price: string
+  eventBadge?: string
   copy: string
   desc: string
   color: string
@@ -140,7 +141,8 @@ const groupClass: Product = {
   id: 'group',
   badge: null,
   name: '그룹 특강 · 1:N 팀워크 & 전략 마스터 클래스',
-  price: '기본(2인) 3.5만 / 인원 추가 당 +1만',
+  price: '기본(2인) 2.5만 / 인원 추가 당 +1만',
+  eventBadge: '5월 이벤트 할인',
   copy: '혼자서는 못 깨는 한계, 팀게임의 진짜 재미를 알려드립니다',
   desc: '팀 플레이의 정수를 배우고 싶은 분을 위한 그룹 코스. 개인 피지컬을 넘어 팀 합을 맞추는 법을 익힙니다.',
   color: '#f5c842',
@@ -315,8 +317,22 @@ export default function CoachingDetailPage({ params }: { params: { id: string } 
                 boxShadow: `0 0 28px ${product.color}0e`,
               }}
             >
+              {product.eventBadge && (
+                <span
+                  className="inline-block text-[9px] font-black tracking-[0.2em] px-2.5 py-1.5 mb-3"
+                  style={{
+                    color: '#f97316',
+                    background: '#f9731618',
+                    border: '1px solid #f9731640',
+                    clipPath:
+                      'polygon(4px 0%,100% 0%,100% calc(100% - 4px),calc(100% - 4px) 100%,0% 100%,0% 4px)',
+                  }}
+                >
+                  {product.eventBadge}
+                </span>
+              )}
               <p className="text-[10px] text-white/35 tracking-widest uppercase mb-1.5">가격</p>
-              <p className="text-3xl font-black" style={{ color: product.color }}>
+              <p className="text-2xl font-black leading-snug" style={{ color: product.color }}>
                 {product.price}
               </p>
             </div>
