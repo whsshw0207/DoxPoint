@@ -2,21 +2,20 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  icons: {
-    icon: [
-      { url: '/favicon.png', type: 'image/png' },
-    ],
-    apple: [
-      { url: '/favicon.png', sizes: '180x180', type: 'image/png' },
-    ],
-  },
-  title: 'DOX.POINT — 오버워치 티어 상승 코칭',
-  description: '감이 아닌 이해를 통해 지속 가능한 티어 상승을 설계합니다. 플레이 직접 분석, 티어별 맞춤 전략, 즉시 적용 가능한 피드백.',
-  keywords: ['오버워치 코칭', '오버워치 티어', 'DOX.POINT', '게임 코칭', '오버워치 강의'],
+  title: 'DOXPOINT | 오버워치 코칭',
+  description: '같은 티어에서 막혔다면? 감이 아닌 이해를 통해 지속 가능한 티어 상승을 설계합니다. 오버워치 전문 코치 DOX의 1:1 플레이 분석 코칭.',
+  keywords: ['오버워치 코칭', '오버워치 과외', 'DOXPOINT', 'doxpoint', 'overwatch coaching', 'OW 코칭', '티어 상승'],
   openGraph: {
-    title: 'DOX.POINT — 오버워치 티어 상승 코칭',
+    title: 'DOXPOINT | 오버워치 코칭',
     description: '감이 아닌 이해를 통해 지속 가능한 티어 상승을 설계합니다.',
+    url: 'https://dox-point.vercel.app',
+    siteName: 'DOXPOINT',
+    locale: 'ko_KR',
     type: 'website',
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 }
 
