@@ -214,7 +214,7 @@ function StepCard({ step, color }: { step: RoadmapItem; color: string }) {
     <div
       className="relative overflow-hidden p-5 bg-[#0f1118] border border-white/[0.07] hover:border-white/[0.14] transition-colors duration-300 flex flex-col justify-start"
       style={{
-        minHeight: 200,
+        minHeight: 120,
         clipPath: 'polygon(10px 0%,100% 0%,100% calc(100% - 10px),calc(100% - 10px) 100%,0% 100%,0% 10px)',
       }}
     >

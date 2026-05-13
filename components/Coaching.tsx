@@ -272,7 +272,7 @@ function PremiumCard({
     <FadeUp delay={index * 0.1} className="h-full">
       <div
         onClick={() => router.push(`/coaching/${product.id}`)}
-        className="group relative h-full md:cursor-pointer overflow-hidden bg-[#0a0c12] transition-all duration-300 flex flex-col hover:scale-[1.02] hover:-translate-y-1 pointer-events-none md:pointer-events-auto"
+        className="group relative h-full md:cursor-pointer overflow-hidden bg-[#0a0c12] transition-all duration-300 flex flex-row md:flex-col hover:scale-[1.02] hover:-translate-y-1 pointer-events-none md:pointer-events-auto"
         style={{
           clipPath:
             'polygon(14px 0%,100% 0%,100% calc(100% - 14px),calc(100% - 14px) 100%,0% 100%,0% 14px)',
@@ -312,20 +312,20 @@ function PremiumCard({
         />
 
         {/* 프리미엄 상품 썸네일 */}
-        <div className="relative shrink-0">
+        <div className="relative shrink-0 w-[150px] md:w-full self-stretch md:self-auto">
           <img
             src={product.image}
             alt={product.name}
             loading="lazy"
-            style={{ width: '100%', height: 'auto', objectFit: 'contain', display: 'block' }}
+            className="w-full h-full md:h-auto object-contain block"
           />
         </div>
 
-        <div className="relative p-[22px] flex flex-col gap-4 flex-1">
+        <div className="relative p-[14px] md:p-[22px] flex flex-col gap-3 md:gap-4 flex-1 min-w-0">
           {/* 뱃지 */}
           <div>
             <span
-              className="text-[10px] font-black tracking-[0.3em] px-2.5 py-1.5"
+              className="text-[9px] md:text-[10px] font-black tracking-[0.3em] px-2 md:px-2.5 py-1 md:py-1.5"
               style={{
                 color: product.color,
                 background: `${product.color}18`,
@@ -341,20 +341,19 @@ function PremiumCard({
           {/* 이름 + 설명 */}
           <div>
             <h3
-              className="typo-card-title text-white mb-1.5 leading-snug"
+              className="text-sm font-black md:typo-card-title text-white mb-1 md:mb-1.5 leading-snug"
             >
               {product.name}
             </h3>
-            <p className="typo-body-sm text-white/50">{product.desc}</p>
+            <p className="text-xs md:typo-body-sm text-white/50">{product.desc}</p>
           </div>
 
           {/* 가격 + 링크 */}
-          <div className="mt-auto pt-4 border-t border-white/[0.07] flex items-center justify-between gap-3">
-            <span className="text-xl font-black" style={{ color: product.color }}>
+          <div className="mt-auto pt-2 md:pt-4 border-t border-white/[0.07] flex items-center justify-between gap-3">
+            <span className="text-base md:text-xl font-black" style={{ color: product.color }}>
               {product.price}
             </span>
-            <Link href={`/coaching/${product.id}`} className="typo-button text-white/35 group-hover:text-white/65 transition-colors flex items-center gap-2 pointer-events-auto">
-              자세히 보기
+            <Link href={`/coaching/${product.id}`} className="flex items-center pointer-events-auto">
               <span className="w-6 h-6 rounded-full flex items-center justify-center bg-white/10 group-hover:bg-white/20 group-hover:translate-x-0.5 transition-all duration-300">
                 <svg
                   className="w-3 h-3"
@@ -410,33 +409,22 @@ function BasicCard({
           }}
         >
           <div
-            className="flex flex-col h-full overflow-hidden bg-[#0d0f18]"
+            className="flex flex-row md:flex-col h-full overflow-hidden bg-[#0d0f18]"
             style={{ clipPath: CLIP }}
           >
             {/* 상단 썸네일 */}
-            <div className="relative shrink-0">
+            <div className="relative shrink-0 w-[130px] md:w-full self-stretch md:self-auto">
               <img
                 src={product.image}
                 alt={product.name}
                 loading="lazy"
-                style={{ width: '100%', height: 'auto', objectFit: 'contain', display: 'block' }}
+                className="w-full h-full md:h-auto object-contain block"
               />
             </div>
 
-            <div className="flex-1 flex flex-col gap-2 p-4 min-w-0">
-              <div className="flex items-start justify-between gap-2">
+            <div className="flex-1 flex flex-col gap-2 p-3 md:p-4 min-w-0">
+              <div>
                 <h4 className="text-base font-bold text-white leading-snug">{product.name}</h4>
-                <Link href={`/coaching/${product.id}`} className="pointer-events-auto shrink-0 mt-0.5 p-1 -m-1">
-                  <svg
-                    className="w-4 h-4 text-white/20 group-hover:text-[#0066ff]/60 transition-colors"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                  </svg>
-                </Link>
               </div>
               <p className="typo-body-sm text-white/40">{product.desc}</p>
               <div className="mt-auto pt-2 border-t border-white/[0.06]">
@@ -454,11 +442,20 @@ function BasicCard({
                     {product.eventBadge}
                   </span>
                 )}
-                <div className="flex items-baseline gap-2">
-                  {product.originalPrice && (
-                    <span className="text-sm font-bold text-white/30 line-through">{product.originalPrice}</span>
-                  )}
-                  <span className="text-lg font-black text-[#f5c842]">{product.price}</span>
+                <div className="flex items-center justify-between gap-2">
+                  <div className="flex items-baseline gap-1.5">
+                    {product.originalPrice && (
+                      <span className="text-sm font-bold text-white/30 line-through">{product.originalPrice}</span>
+                    )}
+                    <span className="text-lg font-black text-[#f5c842]">{product.price}</span>
+                  </div>
+                  <Link href={`/coaching/${product.id}`} className="pointer-events-auto shrink-0">
+                    <span className="w-6 h-6 rounded-full flex items-center justify-center bg-white/10 group-hover:bg-white/20 group-hover:translate-x-0.5 transition-all duration-300">
+                      <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                      </svg>
+                    </span>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -472,7 +469,7 @@ function BasicCard({
     <FadeUp delay={index * 0.08} className="h-full">
       <div
         onClick={() => router.push(`/coaching/${product.id}`)}
-        className="group relative md:cursor-pointer bg-[#0d0f18] border border-white/[0.07] hover:border-[#0066ff]/30 hover:bg-[#0f1120] transition-all duration-300 flex flex-col h-full overflow-hidden hover:scale-[1.02] hover:-translate-y-0.5 pointer-events-none md:pointer-events-auto"
+        className="group relative md:cursor-pointer bg-[#0d0f18] border border-white/[0.07] hover:border-[#0066ff]/30 hover:bg-[#0f1120] transition-all duration-300 flex flex-row md:flex-col h-full overflow-hidden hover:scale-[1.02] hover:-translate-y-0.5 pointer-events-none md:pointer-events-auto"
         style={{
           clipPath: CLIP,
           boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.06)',
@@ -480,29 +477,18 @@ function BasicCard({
         }}
       >
         {/* 상단 썸네일 */}
-        <div className="relative shrink-0">
+        <div className="relative shrink-0 w-[130px] md:w-full self-stretch md:self-auto">
           <img
             src={product.image}
             alt={product.name}
             loading="lazy"
-            style={{ width: '100%', height: 'auto', objectFit: 'contain', display: 'block' }}
+            className="w-full h-full md:h-auto object-contain block"
           />
         </div>
 
-        <div className="flex-1 flex flex-col gap-2 p-4 min-w-0">
-          <div className="flex items-start justify-between gap-2">
+        <div className="flex-1 flex flex-col gap-2 p-3 md:p-4 min-w-0">
+          <div>
             <h4 className="text-base font-bold text-white leading-snug">{product.name}</h4>
-            <Link href={`/coaching/${product.id}`} className="pointer-events-auto shrink-0 mt-0.5 p-1 -m-1">
-              <svg
-                className="w-4 h-4 text-white/20 group-hover:text-[#0066ff]/60 transition-colors"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-              </svg>
-            </Link>
           </div>
           <p className="typo-body-sm text-white/40">{product.desc}</p>
           <div className="mt-auto pt-2 border-t border-white/[0.06]">
@@ -520,11 +506,20 @@ function BasicCard({
                 {product.eventBadge}
               </span>
             )}
-            <div className="flex items-baseline gap-2">
-              {product.originalPrice && (
-                <span className="text-sm font-bold text-white/30 line-through">{product.originalPrice}</span>
-              )}
-              <span className="text-lg font-black text-[#f5c842]">{product.price}</span>
+            <div className="flex items-center justify-between gap-2">
+              <div className="flex items-baseline gap-1.5">
+                {product.originalPrice && (
+                  <span className="text-sm font-bold text-white/30 line-through">{product.originalPrice}</span>
+                )}
+                <span className="text-lg font-black text-[#f5c842]">{product.price}</span>
+              </div>
+              <Link href={`/coaching/${product.id}`} className="pointer-events-auto shrink-0">
+                <span className="w-6 h-6 rounded-full flex items-center justify-center bg-white/10 group-hover:bg-white/20 group-hover:translate-x-0.5 transition-all duration-300">
+                  <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                  </svg>
+                </span>
+              </Link>
             </div>
           </div>
         </div>
