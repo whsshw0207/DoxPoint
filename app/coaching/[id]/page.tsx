@@ -203,6 +203,34 @@ const pro: Product = {
 
 const PRODUCTS: Product[] = [pro, guarantee, monthly, short, twoHour, oneHour, groupClass]
 
+/* ──────────────────────────────────────────────
+   커리큘럼 카드
+─────────────────────────────────────────────── */
+function StepCard({ step, color }: { step: RoadmapItem; color: string }) {
+  const idx = step.desc.indexOf(' — ')
+  const title = idx !== -1 ? step.desc.slice(0, idx) : step.desc
+  const body = idx !== -1 ? step.desc.slice(idx + 3) : null
+  return (
+    <div
+      className="relative overflow-hidden p-5 bg-[#0f1118] border border-white/[0.07] hover:border-white/[0.14] transition-colors duration-300 flex flex-col justify-start"
+      style={{
+        minHeight: 200,
+        clipPath: 'polygon(10px 0%,100% 0%,100% calc(100% - 10px),calc(100% - 10px) 100%,0% 100%,0% 10px)',
+      }}
+    >
+      <div
+        className="absolute left-0 top-0 bottom-0 w-[3px]"
+        style={{ background: `linear-gradient(to bottom, ${color}90, ${color}28)` }}
+      />
+      <div style={{ display: 'flex', alignItems: 'baseline', gap: 8 }}>
+        <span style={{ fontSize: 13, fontWeight: 900, color: '#f5c842', flexShrink: 0 }}>{step.label}</span>
+        <p style={{ fontSize: 15, fontWeight: 700, color: '#ffffff', lineHeight: 1.3 }}>{title}</p>
+      </div>
+      {body && <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.6)', marginTop: 16, lineHeight: 1.5 }}>{body}</p>}
+    </div>
+  )
+}
+
 /* ══════════════════════════════════════════
    페이지
 ══════════════════════════════════════════ */
@@ -304,7 +332,7 @@ export default function CoachingDetailPage({ params }: { params: { id: string } 
           <p className="text-sm text-white/40 leading-relaxed mb-8">{product.desc}</p>
 
           {/* 가격 카드 + 스펙 타임라인 */}
-          <div className="flex flex-col sm:flex-row items-start gap-5 sm:gap-8">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-start gap-5 sm:gap-8">
 
             {/* 좌: 가격 카드 */}
             <div
@@ -332,7 +360,7 @@ export default function CoachingDetailPage({ params }: { params: { id: string } 
                 </span>
               )}
               <p className="text-[10px] text-white/35 tracking-widest uppercase mb-1.5">가격</p>
-              <p className="text-2xl font-black leading-snug" style={{ color: product.color }}>
+              <p className="text-3xl font-black" style={{ color: product.color }}>
                 {product.price}
               </p>
             </div>
@@ -358,45 +386,51 @@ export default function CoachingDetailPage({ params }: { params: { id: string } 
                 if (items.length === 0) return null
 
                 return (
-                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-0">
-                    {items.flatMap(([key, value], i) => {
-                      const nodes = []
-                      if (i > 0) {
-                        nodes.push(
-                          <span
-                            key={`sep-${i}`}
-                            className="hidden sm:inline-block mx-4"
-                            style={{ color: 'rgba(255,255,255,0.2)', fontSize: 14, userSelect: 'none' }}
-                          >
-                            →
-                          </span>
-                        )
-                      }
-                      nodes.push(
-                        <div key={key} className="flex flex-col gap-1">
-                          <span
-                            style={{
-                              fontSize: 11,
-                              color: 'rgba(255,255,255,0.5)',
-                              fontWeight: 600,
-                              letterSpacing: '0.06em',
-                            }}
-                          >
+                  <>
+                    {/* 모바일: 2열 그리드 */}
+                    <div className="grid grid-cols-2 gap-3 sm:hidden">
+                      {items.map(([key, value]) => (
+                        <div key={key} className="flex flex-col items-center justify-center gap-1 py-3 bg-white/[0.03] border border-white/[0.06]">
+                          <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', fontWeight: 600, letterSpacing: '0.06em' }}>
                             {SPEC_LABELS[key] ?? key}
                           </span>
-                          <span style={{ fontSize: 16, fontWeight: 700, color: '#ffffff' }}>
-                            {value}
-                          </span>
+                          <span style={{ fontSize: 16, fontWeight: 700, color: '#ffffff' }}>{value}</span>
                         </div>
-                      )
-                      return nodes
-                    })}
-                  </div>
+                      ))}
+                      {items.length % 2 !== 0 && <div />}
+                    </div>
+                    {/* 데스크탑: 기존 가로 나열 유지 */}
+                    <div className="hidden sm:flex items-center">
+                      {items.flatMap(([key, value], i) => {
+                        const nodes = []
+                        if (i > 0) {
+                          nodes.push(
+                            <span
+                              key={`sep-${i}`}
+                              className="mx-4"
+                              style={{ color: 'rgba(255,255,255,0.2)', fontSize: 14, userSelect: 'none' }}
+                            >
+                              →
+                            </span>
+                          )
+                        }
+                        nodes.push(
+                          <div key={key} className="flex flex-col gap-1">
+                            <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', fontWeight: 600, letterSpacing: '0.06em' }}>
+                              {SPEC_LABELS[key] ?? key}
+                            </span>
+                            <span style={{ fontSize: 16, fontWeight: 700, color: '#ffffff' }}>{value}</span>
+                          </div>
+                        )
+                        return nodes
+                      })}
+                    </div>
+                  </>
                 )
               })()}
 
               {/* 버튼 — 우측 정렬 */}
-              <div className="flex justify-start sm:justify-end">
+              <div className="flex justify-end">
                 <a
                   href="/contact"
                   className="inline-flex items-center gap-3 px-6 py-3.5 bg-[#0066ff] text-white font-bold text-sm tracking-wide hover:bg-[#0052cc] active:scale-[0.98] transition-all duration-300"
@@ -474,38 +508,28 @@ export default function CoachingDetailPage({ params }: { params: { id: string } 
               </h2>
             </FadeUp>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            {/* 모바일: 좌 2개 고정 / 우 나머지 (md 미만에서만) */}
+            <div className="flex md:hidden gap-3">
+              <div className="flex flex-col gap-3 flex-1">
+                {product.roadmap.slice(0, 2).map((step, i) => (
+                  <FadeUp key={i} delay={i * 0.08}>
+                    <StepCard step={step} color={product.color} />
+                  </FadeUp>
+                ))}
+              </div>
+              <div className="flex flex-col gap-3 flex-1">
+                {product.roadmap.slice(2).map((step, i) => (
+                  <FadeUp key={i + 2} delay={(i + 2) * 0.08}>
+                    <StepCard step={step} color={product.color} />
+                  </FadeUp>
+                ))}
+              </div>
+            </div>
+            {/* 데스크탑: 기존 그리드 그대로 유지 (md 이상) */}
+            <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-3">
               {product.roadmap.map((step, i) => (
                 <FadeUp key={i} delay={i * 0.08}>
-                  <div
-                    className="relative overflow-hidden p-5 bg-[#0f1118] border border-white/[0.07] hover:border-white/[0.14] transition-colors duration-300 flex flex-col justify-start"
-                    style={{
-                      minHeight: 200,
-                      clipPath:
-                        'polygon(10px 0%,100% 0%,100% calc(100% - 10px),calc(100% - 10px) 100%,0% 100%,0% 10px)',
-                    }}
-                  >
-                    <div
-                      className="absolute left-0 top-0 bottom-0 w-[3px]"
-                      style={{
-                        background: `linear-gradient(to bottom, ${product.color}90, ${product.color}28)`,
-                      }}
-                    />
-                    {(() => {
-                      const idx = step.desc.indexOf(' — ')
-                      const title = idx !== -1 ? step.desc.slice(0, idx) : step.desc
-                      const body = idx !== -1 ? step.desc.slice(idx + 3) : null
-                      return (
-                        <>
-                          <div style={{ display: 'flex', alignItems: 'baseline', gap: 8 }}>
-                            <span style={{ fontSize: 13, fontWeight: 900, color: '#f5c842', flexShrink: 0 }}>{step.label}</span>
-                            <p style={{ fontSize: 15, fontWeight: 700, color: '#ffffff', lineHeight: 1.3 }}>{title}</p>
-                          </div>
-                          {body && <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.6)', marginTop: 16, lineHeight: 1.5 }}>{body}</p>}
-                        </>
-                      )
-                    })()}
-                  </div>
+                  <StepCard step={step} color={product.color} />
                 </FadeUp>
               ))}
             </div>
@@ -635,6 +659,7 @@ export default function CoachingDetailPage({ params }: { params: { id: string } 
 
         {/* ── CTA ── */}
         <FadeUp>
+          <div className="flex justify-end sm:block">
           <a
             href="/contact"
             className="inline-flex items-center gap-3 px-8 py-4 bg-[#0066ff] text-white font-bold text-sm tracking-wide hover:bg-[#0052cc] active:scale-[0.98] transition-all duration-300"
@@ -649,6 +674,7 @@ export default function CoachingDetailPage({ params }: { params: { id: string } 
             </svg>
             코칭 신청 &amp; Contact
           </a>
+          </div>
         </FadeUp>
       </div>
     </main>

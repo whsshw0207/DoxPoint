@@ -6,6 +6,9 @@ export const metadata: Metadata = {
     icon: [
       { url: '/favicon.svg', type: 'image/svg+xml' },
     ],
+    apple: [
+      { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
   },
   title: 'DOX.POINT — 오버워치 티어 상승 코칭',
   description: '감이 아닌 이해를 통해 지속 가능한 티어 상승을 설계합니다. 플레이 직접 분석, 티어별 맞춤 전략, 즉시 적용 가능한 피드백.',

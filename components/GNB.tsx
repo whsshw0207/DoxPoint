@@ -68,7 +68,7 @@ export default function GNB() {
 
             {/* Logo */}
             <Link href="/" className="relative group flex items-center">
-              <Image src="/logo/logologo.png" alt="DOX.POINT" height={32} width={160} style={{ height: '32px', width: 'auto' }} />
+              <Image src="/logo/logologo.png" alt="DOX.POINT" height={42} width={208} style={{ height: '42px', width: 'auto' }} />
               {/* Animated underline */}
               <span className="absolute -bottom-0.5 left-0 h-px bg-gradient-to-r from-[#0066ff] to-transparent w-0 group-hover:w-full transition-all duration-500" />
             </Link>
