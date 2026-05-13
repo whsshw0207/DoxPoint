@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import { useRouter, usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
+import Image from 'next/image'
 
 const NAV_ITEMS = [
   { label: 'COACHING', href: '#coaching', type: 'scroll' },
@@ -67,11 +68,7 @@ export default function GNB() {
 
             {/* Logo */}
             <Link href="/" className="relative group flex items-center">
-              <span className="font-black text-xl md:text-2xl" style={{ letterSpacing: '0.08em' }}>
-                <span style={{ color: 'white' }}>DOX</span>
-                <span style={{ color: '#0066ff' }}>.</span>
-                <span style={{ color: 'white' }}>POINT</span>
-              </span>
+              <Image src="/logo/logologo.png" alt="DOX.POINT" height={42} width={208} style={{ height: '42px', width: 'auto' }} />
               {/* Animated underline */}
               <span className="absolute -bottom-0.5 left-0 h-px bg-gradient-to-r from-[#0066ff] to-transparent w-0 group-hover:w-full transition-all duration-500" />
             </Link>
