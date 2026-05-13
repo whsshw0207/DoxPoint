@@ -385,44 +385,100 @@ function BasicCard({
   const [hovered, setHovered] = useState(false)
   const isGroup = product.id === 'group'
 
+  const CLIP = 'polygon(10px 0%,100% 0%,100% calc(100% - 10px),calc(100% - 10px) 100%,0% 100%,0% 10px)'
+
+  if (isGroup) {
+    return (
+      <FadeUp delay={index * 0.08} className="h-full">
+        {/* 그라디언트 wrapper — 2px padding이 곧 테두리 */}
+        <div
+          onClick={() => router.push(`/coaching/${product.id}`)}
+          onMouseEnter={() => setHovered(true)}
+          onMouseLeave={() => setHovered(false)}
+          className="group relative md:cursor-pointer h-full pointer-events-none md:pointer-events-auto"
+          style={{
+            padding: '2px',
+            background: hovered
+              ? 'linear-gradient(135deg, #fde68a 0%, #f59e0b 35%, #fcd34d 65%, #d97706 100%)'
+              : 'linear-gradient(135deg, #f59e0b 0%, #fcd34d 40%, #d97706 70%, #f59e0b 100%)',
+            clipPath: CLIP,
+            boxShadow: hovered
+              ? '0 0 28px rgba(245,158,11,0.45), 0 8px 32px rgba(0,0,0,0.5)'
+              : '0 0 16px rgba(245,158,11,0.3), 0 4px 24px rgba(0,0,0,0.4)',
+            transform: hovered ? 'scale(1.02) translateY(-2px)' : 'scale(1) translateY(0)',
+            transition: 'box-shadow 0.25s ease, transform 0.3s cubic-bezier(0.16,1,0.3,1)',
+          }}
+        >
+          <div
+            className="flex flex-col h-full overflow-hidden bg-[#0d0f18]"
+            style={{ clipPath: CLIP }}
+          >
+            {/* 상단 썸네일 */}
+            <div className="relative shrink-0">
+              <img
+                src={product.image}
+                alt={product.name}
+                loading="lazy"
+                style={{ width: '100%', height: 'auto', objectFit: 'contain', display: 'block' }}
+              />
+            </div>
+
+            <div className="flex-1 flex flex-col gap-2 p-4 min-w-0">
+              <div className="flex items-start justify-between gap-2">
+                <h4 className="text-base font-bold text-white leading-snug">{product.name}</h4>
+                <Link href={`/coaching/${product.id}`} className="pointer-events-auto shrink-0 mt-0.5 p-1 -m-1">
+                  <svg
+                    className="w-4 h-4 text-white/20 group-hover:text-[#0066ff]/60 transition-colors"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                  </svg>
+                </Link>
+              </div>
+              <p className="typo-body-sm text-white/40">{product.desc}</p>
+              <div className="mt-auto pt-2 border-t border-white/[0.06]">
+                {product.eventBadge && (
+                  <span
+                    className="inline-block text-[9px] tracking-[0.2em] px-2 py-1 mb-1.5"
+                    style={{
+                      color: '#000',
+                      background: '#f59e0b',
+                      fontWeight: 700,
+                      boxShadow: '0 0 8px rgba(245,158,11,0.5)',
+                      clipPath: 'polygon(4px 0%,100% 0%,100% calc(100% - 4px),calc(100% - 4px) 100%,0% 100%,0% 4px)',
+                    }}
+                  >
+                    {product.eventBadge}
+                  </span>
+                )}
+                <div className="flex items-baseline gap-2">
+                  {product.originalPrice && (
+                    <span className="text-sm font-bold text-white/30 line-through">{product.originalPrice}</span>
+                  )}
+                  <span className="text-lg font-black text-[#f5c842]">{product.price}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </FadeUp>
+    )
+  }
+
   return (
     <FadeUp delay={index * 0.08} className="h-full">
       <div
         onClick={() => router.push(`/coaching/${product.id}`)}
-        onMouseEnter={isGroup ? () => setHovered(true) : undefined}
-        onMouseLeave={isGroup ? () => setHovered(false) : undefined}
-        className={[
-          'group relative md:cursor-pointer bg-[#0d0f18] transition-all duration-300 flex flex-col h-full overflow-hidden hover:scale-[1.02] hover:-translate-y-0.5 pointer-events-none md:pointer-events-auto',
-          isGroup ? '' : 'border border-white/[0.07] hover:border-[#0066ff]/30 hover:bg-[#0f1120]',
-        ].join(' ')}
+        className="group relative md:cursor-pointer bg-[#0d0f18] border border-white/[0.07] hover:border-[#0066ff]/30 hover:bg-[#0f1120] transition-all duration-300 flex flex-col h-full overflow-hidden hover:scale-[1.02] hover:-translate-y-0.5 pointer-events-none md:pointer-events-auto"
         style={{
-          clipPath:
-            'polygon(10px 0%,100% 0%,100% calc(100% - 10px),calc(100% - 10px) 100%,0% 100%,0% 10px)',
-          ...(isGroup
-            ? {
-                border: '1.5px solid transparent',
-                boxShadow: hovered
-                  ? '0 0 0 1.5px #fcd34d, 0 0 28px rgba(245,158,11,0.45), 0 8px 32px rgba(0,0,0,0.5)'
-                  : '0 0 0 1.5px #f59e0b, 0 0 16px rgba(245,158,11,0.3), 0 4px 24px rgba(0,0,0,0.4)',
-                transition: 'box-shadow 0.25s ease',
-              }
-            : {
-                boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.06)',
-              }),
+          clipPath: CLIP,
+          boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.06)',
           transitionTimingFunction: 'cubic-bezier(0.16,1,0.3,1)',
         }}
       >
-        {/* 골드 그라디언트 바 — group 카드 전용 */}
-        {isGroup && (
-          <div
-            style={{
-              height: '2px',
-              flexShrink: 0,
-              background: 'linear-gradient(90deg, #f59e0b, #fcd34d, #f59e0b)',
-            }}
-          />
-        )}
-
         {/* 상단 썸네일 */}
         <div className="relative shrink-0">
           <img
@@ -453,23 +509,13 @@ function BasicCard({
             {product.eventBadge && (
               <span
                 className="inline-block text-[9px] tracking-[0.2em] px-2 py-1 mb-1.5"
-                style={
-                  isGroup
-                    ? {
-                        color: '#000',
-                        background: '#f59e0b',
-                        fontWeight: 700,
-                        boxShadow: '0 0 8px rgba(245,158,11,0.5)',
-                        clipPath: 'polygon(4px 0%,100% 0%,100% calc(100% - 4px),calc(100% - 4px) 100%,0% 100%,0% 4px)',
-                      }
-                    : {
-                        color: '#f97316',
-                        background: '#f9731618',
-                        border: '1px solid #f9731640',
-                        fontWeight: 900,
-                        clipPath: 'polygon(4px 0%,100% 0%,100% calc(100% - 4px),calc(100% - 4px) 100%,0% 100%,0% 4px)',
-                      }
-                }
+                style={{
+                  color: '#f97316',
+                  background: '#f9731618',
+                  border: '1px solid #f9731640',
+                  fontWeight: 900,
+                  clipPath: 'polygon(4px 0%,100% 0%,100% calc(100% - 4px),calc(100% - 4px) 100%,0% 100%,0% 4px)',
+                }}
               >
                 {product.eventBadge}
               </span>
