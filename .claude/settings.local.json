@@ -29,7 +29,8 @@
       "PowerShell($git = \"C:\\\\Users\\\\ㅎㅅ\\\\AppData\\\\Local\\\\GitHubDesktop\\\\app-3.5.8\\\\resources\\\\app\\\\git\\\\cmd\\\\git.exe\"; cd \"c:\\\\Users\\\\ㅎㅅ\\\\Documents\\\\GitHub\\\\DoxPoint\"; & $git add .; & $git commit -m \"EmpathyBanner 이미지 교체 전 백업\")",
       "PowerShell($git = \"C:\\\\Users\\\\ㅎㅅ\\\\AppData\\\\Local\\\\GitHubDesktop\\\\app-3.5.8\\\\resources\\\\app\\\\git\\\\cmd\\\\git.exe\"; cd \"c:\\\\Users\\\\ㅎㅅ\\\\Documents\\\\GitHub\\\\DoxPoint\"; & $git add .; & $git commit -m \"리뷰 슬라이더 수정 전 백업\")",
       "PowerShell($git = \"C:\\\\Users\\\\ㅎㅅ\\\\AppData\\\\Local\\\\GitHubDesktop\\\\app-3.5.8\\\\resources\\\\app\\\\git\\\\cmd\\\\git.exe\"; cd \"c:\\\\Users\\\\ㅎㅅ\\\\Documents\\\\GitHub\\\\DoxPoint\"; & $git add .; & $git commit -m \"영웅 메이트 매핑 수정 전 백업\")",
-      "WebFetch(domain:api.github.com)"
+      "WebFetch(domain:api.github.com)",
+      "Bash(Remove-Item *)"
     ]
   }
 }

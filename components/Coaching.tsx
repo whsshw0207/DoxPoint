@@ -382,18 +382,47 @@ function BasicCard({
   index: number
 }) {
   const router = useRouter()
+  const [hovered, setHovered] = useState(false)
+  const isGroup = product.id === 'group'
+
   return (
     <FadeUp delay={index * 0.08} className="h-full">
       <div
         onClick={() => router.push(`/coaching/${product.id}`)}
-        className="group relative md:cursor-pointer bg-[#0d0f18] border border-white/[0.07] hover:border-[#0066ff]/30 hover:bg-[#0f1120] transition-all duration-300 flex flex-col h-full overflow-hidden hover:scale-[1.02] hover:-translate-y-0.5 pointer-events-none md:pointer-events-auto"
+        onMouseEnter={isGroup ? () => setHovered(true) : undefined}
+        onMouseLeave={isGroup ? () => setHovered(false) : undefined}
+        className={[
+          'group relative md:cursor-pointer bg-[#0d0f18] transition-all duration-300 flex flex-col h-full overflow-hidden hover:scale-[1.02] hover:-translate-y-0.5 pointer-events-none md:pointer-events-auto',
+          isGroup ? '' : 'border border-white/[0.07] hover:border-[#0066ff]/30 hover:bg-[#0f1120]',
+        ].join(' ')}
         style={{
           clipPath:
             'polygon(10px 0%,100% 0%,100% calc(100% - 10px),calc(100% - 10px) 100%,0% 100%,0% 10px)',
-          boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.06)',
+          ...(isGroup
+            ? {
+                border: '1.5px solid transparent',
+                boxShadow: hovered
+                  ? '0 0 0 1.5px #fcd34d, 0 0 28px rgba(245,158,11,0.45), 0 8px 32px rgba(0,0,0,0.5)'
+                  : '0 0 0 1.5px #f59e0b, 0 0 16px rgba(245,158,11,0.3), 0 4px 24px rgba(0,0,0,0.4)',
+                transition: 'box-shadow 0.25s ease',
+              }
+            : {
+                boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.06)',
+              }),
           transitionTimingFunction: 'cubic-bezier(0.16,1,0.3,1)',
         }}
       >
+        {/* 골드 그라디언트 바 — group 카드 전용 */}
+        {isGroup && (
+          <div
+            style={{
+              height: '2px',
+              flexShrink: 0,
+              background: 'linear-gradient(90deg, #f59e0b, #fcd34d, #f59e0b)',
+            }}
+          />
+        )}
+
         {/* 상단 썸네일 */}
         <div className="relative shrink-0">
           <img
@@ -423,13 +452,24 @@ function BasicCard({
           <div className="mt-auto pt-2 border-t border-white/[0.06]">
             {product.eventBadge && (
               <span
-                className="inline-block text-[9px] font-black tracking-[0.2em] px-2 py-1 mb-1.5"
-                style={{
-                  color: '#f97316',
-                  background: '#f9731618',
-                  border: '1px solid #f9731640',
-                  clipPath: 'polygon(4px 0%,100% 0%,100% calc(100% - 4px),calc(100% - 4px) 100%,0% 100%,0% 4px)',
-                }}
+                className="inline-block text-[9px] tracking-[0.2em] px-2 py-1 mb-1.5"
+                style={
+                  isGroup
+                    ? {
+                        color: '#000',
+                        background: '#f59e0b',
+                        fontWeight: 700,
+                        boxShadow: '0 0 8px rgba(245,158,11,0.5)',
+                        clipPath: 'polygon(4px 0%,100% 0%,100% calc(100% - 4px),calc(100% - 4px) 100%,0% 100%,0% 4px)',
+                      }
+                    : {
+                        color: '#f97316',
+                        background: '#f9731618',
+                        border: '1px solid #f9731640',
+                        fontWeight: 900,
+                        clipPath: 'polygon(4px 0%,100% 0%,100% calc(100% - 4px),calc(100% - 4px) 100%,0% 100%,0% 4px)',
+                      }
+                }
               >
                 {product.eventBadge}
               </span>
