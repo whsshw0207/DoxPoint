@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
@@ -138,6 +138,13 @@ function StarRating({ rating }: { rating: number }) {
 export default function Reviews() {
   const [page, setPage] = useState(0);
   const [expandedIdx, setExpandedIdx] = useState<number | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 640);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
   const totalPages = Math.ceil(BOARD_REVIEWS.length / PAGE_SIZE);
   const pageReviews = BOARD_REVIEWS.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE);
 
@@ -166,12 +173,12 @@ export default function Reviews() {
         <div className="overflow-hidden mb-6" style={{ WebkitMaskImage: "linear-gradient(90deg, transparent 0%, black 6%, black 94%, transparent 100%)", maskImage: "linear-gradient(90deg, transparent 0%, black 6%, black 94%, transparent 100%)" }}>
           <div className="marquee-track">
             {[...MARQUEE_REVIEWS, ...MARQUEE_REVIEWS].map((r, i) => (
-              <div key={i} className="shrink-0 mr-4" style={{ width: 430, height: 330 }}>
+              <div key={i} className="shrink-0 mr-4" style={isMobile ? { width: '55vw', height: 'auto', minHeight: 280 } : { width: 430, height: 330 }}>
                 <div className="w-full h-full px-6 pb-3 rounded-2xl flex flex-col gap-1" style={{ paddingTop: '2px', background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.07)", boxShadow: "inset 0 1px 0 rgba(255,255,255,0.10), 0 0 20px rgba(0,102,255,0.04)" }}>
-                  <div className="flex items-end justify-center gap-5">
+                  <div className="flex items-end justify-center gap-5" style={isMobile ? { paddingTop: 10 } : {}}>
                     <div className="flex flex-col items-center" style={{ gap: 0 }}>
-                      <TierImage tier={r.fromTier} size={123} />
-                      <span className="text-[14px] font-bold" style={{ color: '#ffffff', marginTop: 0 }}>{r.fromTier}</span>
+                      <TierImage tier={r.fromTier} size={isMobile ? 66 : 123} />
+                      <span className="font-bold" style={{ color: '#ffffff', marginTop: 0, fontSize: isMobile ? 13 : 14 }}>{r.fromTier}</span>
                     </div>
                     <svg width={24} height={48} viewBox="0 0 24 48" fill="none"
                       style={{ flexShrink: 0, alignSelf: 'center' }}>
@@ -192,11 +199,11 @@ export default function Reviews() {
                       />
                     </svg>
                     <div className="flex flex-col items-center" style={{ gap: 0 }}>
-                      <TierImage tier={r.toTier} size={148} />
-                      <span className="text-[14px] font-bold" style={{ color: '#ffffff', marginTop: 0 }}>{r.toTier}</span>
+                      <TierImage tier={r.toTier} size={isMobile ? 66 : 148} />
+                      <span className="font-bold" style={{ color: '#ffffff', marginTop: 0, fontSize: isMobile ? 13 : 14 }}>{r.toTier}</span>
                     </div>
                   </div>
-                  <p className="typo-body-sm text-gray-400 flex-1" style={{ marginTop: 7, display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}>{r.review}</p>
+                  <p className="typo-body-sm text-gray-400 flex-1" style={{ marginTop: 7, display: "-webkit-box", WebkitLineClamp: isMobile ? 3 : 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}>{r.review}</p>
                   <p className="typo-body-sm text-white font-semibold">{r.name}</p>
                 </div>
               </div>
@@ -211,15 +218,25 @@ export default function Reviews() {
                 const isExpanded = expandedIdx === i;
                 return (
                   <motion.div key={`${page}-${i}`} variants={{ hidden: { opacity: 0, y: 12 }, visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] } } }} style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
-                    <div className="grid items-start py-2.5 px-1 gap-4 cursor-pointer transition-colors duration-150" style={{ gridTemplateColumns: "180px 80px 1fr", background: "transparent" }}
-                      onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.background = "rgba(255,255,255,0.025)"; }}
-                      onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.background = "transparent"; }}
-                      onClick={() => setExpandedIdx(isExpanded ? null : i)}
-                    >
-                      <p className="typo-body-sm text-white font-semibold leading-snug">{r.name}</p>
-                      <div className="pt-0.5"><StarRating rating={r.rating} /></div>
-                      <p className="typo-body-sm text-gray-400" style={isExpanded ? {} : { overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{r.review}</p>
-                    </div>
+                    {isMobile ? (
+                      <div className="flex flex-col py-2.5 px-1">
+                        <div className="flex items-center">
+                          <p className="typo-body-sm text-white font-semibold leading-snug">{r.name}</p>
+                          <StarRating rating={r.rating} />
+                        </div>
+                        <p className="typo-body-sm text-gray-400 mt-1">{r.review}</p>
+                      </div>
+                    ) : (
+                      <div className="grid items-start py-2.5 px-1 gap-4 cursor-pointer transition-colors duration-150" style={{ gridTemplateColumns: "180px 80px 1fr", background: "transparent" }}
+                        onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.background = "rgba(255,255,255,0.025)"; }}
+                        onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.background = "transparent"; }}
+                        onClick={() => setExpandedIdx(isExpanded ? null : i)}
+                      >
+                        <p className="typo-body-sm text-white font-semibold leading-snug">{r.name}</p>
+                        <div className="pt-0.5"><StarRating rating={r.rating} /></div>
+                        <p className="typo-body-sm text-gray-400" style={isExpanded ? {} : { overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{r.review}</p>
+                      </div>
+                    )}
                   </motion.div>
                 );
               })}
