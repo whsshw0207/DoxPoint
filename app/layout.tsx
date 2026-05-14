@@ -1,12 +1,13 @@
 import type { Metadata } from 'next'
+import { GoogleAnalytics } from '@next/third-parties/google'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'DOXPOINT | 오버워치 코칭',
+  title: 'DOX.POINT',
   description: '같은 티어에서 막혔다면? 감이 아닌 이해를 통해 지속 가능한 티어 상승을 설계합니다. 오버워치 전문 코치 DOX의 1:1 플레이 분석 코칭.',
   keywords: ['오버워치 코칭', '오버워치 과외', 'DOXPOINT', 'doxpoint', 'overwatch coaching', 'OW 코칭', '티어 상승'],
   openGraph: {
-    title: 'DOXPOINT | 오버워치 코칭',
+    title: 'DOX.POINT',
     description: '감이 아닌 이해를 통해 지속 가능한 티어 상승을 설계합니다.',
     url: 'https://dox-point.vercel.app',
     siteName: 'DOXPOINT',
@@ -47,6 +48,9 @@ export default function RootLayout({
       <body className="bg-bg text-white antialiased">
         {children}
       </body>
+      {process.env.NEXT_PUBLIC_GA_ID && (
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
+      )}
     </html>
   )
 }
