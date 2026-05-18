@@ -246,8 +246,8 @@ export default function Hero() {
             {/* Body */}
             <motion.p
               initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: headlineDone ? 1 : 0, y: headlineDone ? 0 : 10 }}
-              transition={{ delay: 0.4, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.6 }}
               className="typo-body text-white/50 mb-8 max-w-[48ch]"
             >
               감이 아닌 이해를 통해 지속 가능한 티어 상승을 설계합니다.
