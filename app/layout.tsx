@@ -1,11 +1,7 @@
 import type { Metadata } from 'next'
-import dynamic from 'next/dynamic'
+import { Suspense } from 'react'
+import { GoogleAnalytics } from '@next/third-parties/google'
 import { Archivo, JetBrains_Mono } from 'next/font/google'
-
-const GoogleAnalytics = dynamic(
-  () => import('@next/third-parties/google').then((mod) => mod.GoogleAnalytics),
-  { ssr: false }
-)
 import './globals.css'
 
 const archivo = Archivo({
@@ -63,7 +59,9 @@ export default function RootLayout({
         {children}
       </body>
       {process.env.NEXT_PUBLIC_GA_ID && (
-        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
+        <Suspense fallback={null}>
+          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
+        </Suspense>
       )}
     </html>
   )
