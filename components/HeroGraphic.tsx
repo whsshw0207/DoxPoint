@@ -5,13 +5,15 @@ import { useState, useEffect, useRef, useMemo } from 'react'
 interface HeroGraphicProps {
   accent?: string
   intensity?: 'low' | 'medium' | 'high'
+  isMobile?: boolean
 }
 
-export default function HeroGraphic({ accent = '#0066ff', intensity = 'high' }: HeroGraphicProps) {
+export default function HeroGraphic({ accent = '#0066ff', intensity = 'high', isMobile = false }: HeroGraphicProps) {
   const ref = useRef<HTMLDivElement>(null)
   const [mouse, setMouse] = useState({ x: 0.5, y: 0.5 })
 
   useEffect(() => {
+    if (isMobile) return
     const el = ref.current
     if (!el) return
     const onMove = (e: MouseEvent) => {
@@ -23,10 +25,10 @@ export default function HeroGraphic({ accent = '#0066ff', intensity = 'high' }: 
     }
     el.addEventListener('mousemove', onMove)
     return () => el.removeEventListener('mousemove', onMove)
-  }, [])
+  }, [isMobile])
 
-  const px = (mouse.x - 0.5) * 24
-  const py = (mouse.y - 0.5) * 24
+  const px = isMobile ? 0 : (mouse.x - 0.5) * 24
+  const py = isMobile ? 0 : (mouse.y - 0.5) * 24
 
   const [mouseActive, setMouseActive] = useState(false)
   const targetRef   = useRef(100)
@@ -39,6 +41,10 @@ export default function HeroGraphic({ accent = '#0066ff', intensity = 'high' }: 
   const LERP: [number, number, number] = [0.10, 0.055, 0.030]
 
   useEffect(() => {
+    if (isMobile) {
+      setBars([100, 100, 100])
+      return
+    }
     const loop = () => {
       const t = targetRef.current
       const cur = barsRef.current
@@ -61,8 +67,9 @@ export default function HeroGraphic({ accent = '#0066ff', intensity = 'high' }: 
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
+    if (isMobile) return
     targetRef.current = mouseActive ? Math.round(mouse.x * 100) : 100
-  }, [mouse.x, mouseActive])
+  }, [mouse.x, mouseActive, isMobile])
 
   const trails = useMemo(() => {
     const arr = []
@@ -98,8 +105,10 @@ export default function HeroGraphic({ accent = '#0066ff', intensity = 'high' }: 
 
   return (
     <div className="hero-gfx" ref={ref} style={{ color: accent }}
-      onMouseEnter={() => setMouseActive(true)}
-      onMouseLeave={() => setMouseActive(false)}
+      {...(!isMobile && {
+        onMouseEnter: () => setMouseActive(true),
+        onMouseLeave: () => setMouseActive(false),
+      })}
     >
       {/* BACK: grid + radials */}
       <div className="gfx-grid" />

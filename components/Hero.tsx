@@ -169,7 +169,7 @@ const STRENGTH_CARDS = [
    Hero
 ─────────────────────────────────────────────── */
 export default function Hero() {
-  const [isMobile, setIsMobile] = useState(true)
+  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
     setIsMobile(window.innerWidth < 1024)
@@ -247,7 +247,7 @@ export default function Hero() {
             <motion.p
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.6 }}
+              transition={{ duration: 0.6 }}
               className="typo-body text-white/50 mb-8 max-w-[48ch]"
             >
               감이 아닌 이해를 통해 지속 가능한 티어 상승을 설계합니다.
@@ -320,19 +320,17 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* ── Right: HeroGraphic — 조건부 렌더링으로 교체 */}
-          {!isMobile && (
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.5, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="relative flex items-center justify-end py-8"
-            >
-              <div className="w-[95%]">
-                <HeroGraphic accent="#0066ff" intensity="high" />
-              </div>
-            </motion.div>
-          )}
+          {/* ── Right: HeroGraphic ── */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.5, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className={isMobile ? 'w-full mt-6 h-[280px] overflow-hidden' : 'relative flex items-center justify-end py-8'}
+          >
+            <div className={isMobile ? 'w-full h-full' : 'w-[95%]'}>
+              <HeroGraphic accent="#0066ff" intensity="high" isMobile={isMobile} />
+            </div>
+          </motion.div>
 
         </div>
       </div>
