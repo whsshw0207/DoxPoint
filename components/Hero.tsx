@@ -236,7 +236,7 @@ export default function Hero() {
             {/* Sub headline */}
             <motion.p
               initial={{ opacity: 0 }}
-              animate={{ opacity: headlineDone ? 1 : 0 }}
+              animate={{ opacity: (isMobile || headlineDone) ? 1 : 0 }}
               transition={{ delay: 0.2, duration: 0.6 }}
               className="typo-subtitle text-white/80 mb-3"
             >
@@ -256,7 +256,7 @@ export default function Hero() {
             {/* CTAs */}
             <motion.div
               initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: headlineDone ? 1 : 0, y: headlineDone ? 0 : 16 }}
+              animate={{ opacity: (isMobile || headlineDone) ? 1 : 0, y: (isMobile || headlineDone) ? 0 : 16 }}
               transition={{ delay: 0.6, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
               className="flex flex-col sm:flex-row gap-3 mb-10"
             >
@@ -298,7 +298,7 @@ export default function Hero() {
             {/* Strength Cards */}
             <motion.div
               initial={{ opacity: 0 }}
-              animate={{ opacity: headlineDone ? 1 : 0 }}
+              animate={{ opacity: (isMobile || headlineDone) ? 1 : 0 }}
               transition={{ delay: 0.8, duration: 0.5 }}
               className="grid grid-cols-1 sm:grid-cols-3 gap-3"
             >
@@ -306,7 +306,7 @@ export default function Hero() {
                 <motion.div
                   key={card.title}
                   initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: headlineDone ? 1 : 0, y: headlineDone ? 0 : 12 }}
+                  animate={{ opacity: (isMobile || headlineDone) ? 1 : 0, y: (isMobile || headlineDone) ? 0 : 12 }}
                   transition={{ delay: 0.85 + card.delay, ease: [0.16, 1, 0.3, 1] }}
                   className="relative group p-4 bg-white/[0.03] border border-white/[0.08] hover:border-[#0066ff]/40 hover:bg-[#0066ff]/[0.04] transition-all duration-300 cursor-default"
                   style={{ clipPath: 'polygon(8px 0%, 100% 0%, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0% 100%, 0% 8px)' }}
