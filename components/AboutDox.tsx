@@ -78,16 +78,16 @@ function CoachIntro() {
             style={{ clipPath: 'polygon(16px 0%,100% 0%,100% calc(100% - 16px),calc(100% - 16px) 100%,0% 100%,0% 16px)' }}
           >
             <Image
-                src="/etc/png_DOX_Headshot.png"
+                src="/etc/png_DOX_Headshot.webp"
                 alt="DOX 코치"
                 fill
                 priority
+                quality={80}
                 sizes="(min-width: 1024px) 384px, 100vw"
                 placeholder="blur"
                 blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=="
                 className="object-cover"
                 style={{ opacity: 1, zIndex: 1 }}
-                unoptimized={true}
             />
             <span className="absolute top-3 left-3 w-5 h-5 border-t-2 border-l-2 border-[#0066ff]" style={{ zIndex: 2 }} />
             <span className="absolute top-3 right-3 w-5 h-5 border-t-2 border-r-2 border-[#0066ff]" style={{ zIndex: 2 }} />
@@ -387,10 +387,14 @@ function EmpathyBanner() {
         position: 'absolute', left: 0, top: 0, bottom: 0, width: '2px',
         background: 'linear-gradient(to bottom, transparent, #0066ff 30%, #0066ff 70%, transparent)',
       }} />
-      <img
-        src="/etc/3인배너 수정.png"
+      <Image
+        src="/etc/3인배너 수정.webp"
         alt="배너"
+        width={1920}
+        height={800}
+        quality={80}
         loading="lazy"
+        sizes="100vw"
         style={{width:'100%', height:'auto', display:'block', objectFit:'contain', background:'transparent'}}
       />
       <div style={{borderTop:'1px solid rgba(0,102,255,0.2)', paddingTop:'16px', textAlign:'center'}}>

@@ -231,7 +231,7 @@ const PREMIUM_PRODUCTS = [
     price: '390,000원~',
     desc: '프로게이머를 목표로 하는 집중 코칭',
     color: '#38bdf8',
-    image: '/class/프로.png',
+    image: '/class/프로.webp',
   },
   {
     id: 'guarantee',
@@ -240,7 +240,7 @@ const PREMIUM_PRODUCTS = [
     price: '상담 후 결정',
     desc: '목표 티어 달성까지 무제한 수업',
     color: '#a78bfa',
-    image: '/class/티어.png',
+    image: '/class/티어.webp',
   },
   {
     id: 'monthly',
@@ -249,15 +249,15 @@ const PREMIUM_PRODUCTS = [
     price: '175,000원',
     desc: '한 달 집중 케어 코칭',
     color: '#86efac',
-    image: '/class/한달.png',
+    image: '/class/한달.webp',
   },
 ]
 
 const BASIC_PRODUCTS = [
-  { id: '1hour', name: '1시간 특강', price: '25,000원', desc: '빠른 원포인트 레슨', image: '/class/1시간.png' },
-  { id: '2hour', name: '2시간 특강', price: '45,000원', desc: '심화 분석 코칭', image: '/class/2시간.png' },
-  { id: 'short', name: '단기 특강', price: '120,000원', desc: '집중 단기 케어', image: '/class/단기특강_큰용량.jpg' },
-  { id: 'group', name: '1:N 그룹 수업', price: '25,000원~', originalPrice: '35,000원~', eventBadge: '5월 이벤트 할인', desc: '소규모 그룹 코칭', image: '/class/그룹특강.png' },
+  { id: '1hour', name: '1시간 특강', price: '25,000원', desc: '빠른 원포인트 레슨', image: '/class/1시간.webp' },
+  { id: '2hour', name: '2시간 특강', price: '45,000원', desc: '심화 분석 코칭', image: '/class/2시간.webp' },
+  { id: 'short', name: '단기 특강', price: '120,000원', desc: '집중 단기 케어', image: '/class/단기특강_큰용량.webp' },
+  { id: 'group', name: '1:N 그룹 수업', price: '25,000원~', originalPrice: '35,000원~', eventBadge: '5월 이벤트 할인', desc: '소규모 그룹 코칭', image: '/class/그룹특강.webp' },
 ]
 
 function PremiumCard({
@@ -313,9 +313,12 @@ function PremiumCard({
 
         {/* 프리미엄 상품 썸네일 */}
         <div className="relative shrink-0 w-[150px] md:w-full self-stretch md:self-auto">
-          <img
+          <Image
             src={product.image}
             alt={product.name}
+            width={600}
+            height={400}
+            quality={80}
             loading="lazy"
             className="w-full h-full md:h-auto object-contain block"
           />
@@ -478,9 +481,12 @@ function BasicCard({
       >
         {/* 상단 썸네일 */}
         <div className="relative shrink-0 w-[130px] md:w-full self-stretch md:self-auto">
-          <img
+          <Image
             src={product.image}
             alt={product.name}
+            width={600}
+            height={400}
+            quality={80}
             loading="lazy"
             className="w-full h-full md:h-auto object-contain block"
           />
