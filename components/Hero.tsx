@@ -169,6 +169,12 @@ const STRENGTH_CARDS = [
    Hero
 ─────────────────────────────────────────────── */
 export default function Hero() {
+  const [isMobile, setIsMobile] = useState(true)
+
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 1024)
+  }, [])
+
   const { displayed: headline, done: headlineDone } = useTypingEffect(
     '같은 티어에서 1년째 막혔다면?',
     55,
@@ -188,8 +194,8 @@ export default function Hero() {
       id="hero"
       className="relative flex items-center min-h-[100dvh] pt-16 overflow-hidden bg-bg"
     >
-      {/* Animated background */}
-      <ParticleGrid />
+      {/* Animated background — 모바일 제거 */}
+      {!isMobile && <ParticleGrid />}
 
       {/* Radial glow */}
       <div className="absolute inset-0 pointer-events-none">
@@ -314,17 +320,19 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* ── Right: HeroGraphic ── */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.5, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="relative hidden lg:flex items-center justify-end py-8"
-          >
-            <div className="w-[95%]">
-              <HeroGraphic accent="#0066ff" intensity="high" />
-            </div>
-          </motion.div>
+          {/* ── Right: HeroGraphic — 조건부 렌더링으로 교체 */}
+          {!isMobile && (
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.5, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="relative flex items-center justify-end py-8"
+            >
+              <div className="w-[95%]">
+                <HeroGraphic accent="#0066ff" intensity="high" />
+              </div>
+            </motion.div>
+          )}
 
         </div>
       </div>
