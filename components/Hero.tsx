@@ -4,6 +4,18 @@ import { useEffect, useRef, useState, useCallback } from 'react'
 import { motion } from 'framer-motion'
 import HeroGraphic from './HeroGraphic'
 
+function useMediaQuery(query: string) {
+  const [matches, setMatches] = useState(false)
+  useEffect(() => {
+    const mq = window.matchMedia(query)
+    setMatches(mq.matches)
+    const handler = (e: MediaQueryListEvent) => setMatches(e.matches)
+    mq.addEventListener('change', handler)
+    return () => mq.removeEventListener('change', handler)
+  }, [query])
+  return matches
+}
+
 /* ──────────────────────────────────────────────
    Typing Hook
 ─────────────────────────────────────────────── */
@@ -169,6 +181,7 @@ const STRENGTH_CARDS = [
    Hero
 ─────────────────────────────────────────────── */
 export default function Hero() {
+  const isDesktop = useMediaQuery('(min-width: 1024px)')
   const { displayed: headline, done: headlineDone } = useTypingEffect(
     '같은 티어에서 1년째 막혔다면?',
     55,
@@ -315,16 +328,18 @@ export default function Hero() {
           </div>
 
           {/* ── Right: HeroGraphic ── */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.5, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="relative hidden lg:flex items-center justify-end py-8"
-          >
-            <div className="w-[95%]">
-              <HeroGraphic accent="#0066ff" intensity="high" />
-            </div>
-          </motion.div>
+          {isDesktop && (
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.5, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="relative flex items-center justify-end py-8"
+            >
+              <div className="w-[95%]">
+                <HeroGraphic accent="#0066ff" intensity="high" />
+              </div>
+            </motion.div>
+          )}
 
         </div>
       </div>
