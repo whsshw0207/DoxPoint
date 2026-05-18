@@ -325,7 +325,7 @@ export default function Hero() {
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.5, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className={isMobile ? 'w-full mt-6 h-[280px] overflow-hidden' : 'relative flex items-center justify-end py-8'}
+            className={isMobile ? 'w-full h-[240px] overflow-hidden mt-4' : 'relative flex items-center justify-end py-8'}
           >
             <div className={isMobile ? 'w-full h-full' : 'w-[95%]'}>
               <HeroGraphic accent="#0066ff" intensity="high" isMobile={isMobile} />
