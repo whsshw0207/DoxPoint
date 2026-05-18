@@ -1,11 +1,13 @@
 'use client'
 
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
+import Image from 'next/image'
 import { motion, useInView } from 'framer-motion'
 
 export default function CTASection() {
   const ref = useRef<HTMLDivElement>(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
+  const [clicked, setClicked] = useState(false)
 
   return (
     <section id="cta" className="relative py-24 md:py-32 bg-[#0a0c12] overflow-hidden">
@@ -47,14 +49,38 @@ export default function CTASection() {
               }}
             >
               <div className="relative w-full overflow-hidden" style={{ paddingBottom: '56.25%' }}>
-                <iframe
-                  src="https://www.youtube.com/embed/67kDttIDm8A"
-                  title="DOX 코칭 영상"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  className="absolute inset-0 w-full h-full"
-                  style={{ border: 0 }}
-                />
+                {clicked ? (
+                  <iframe
+                    src="https://www.youtube.com/embed/67kDttIDm8A?autoplay=1"
+                    title="DOX 코칭 영상"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="absolute inset-0 w-full h-full"
+                    style={{ border: 0 }}
+                  />
+                ) : (
+                  <div
+                    className="absolute inset-0 w-full h-full cursor-pointer group"
+                    onClick={() => setClicked(true)}
+                  >
+                    <Image
+                      src="https://img.youtube.com/vi/67kDttIDm8A/maxresdefault.jpg"
+                      alt="DOX 코칭 영상 썸네일"
+                      fill
+                      sizes="(min-width: 1024px) 50vw, 100vw"
+                      className="object-cover"
+                      unoptimized
+                    />
+                    {/* 재생 버튼 */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="w-16 h-16 rounded-full bg-black/60 flex items-center justify-center group-hover:bg-[#0066ff]/80 transition-colors duration-300">
+                        <svg className="w-7 h-7 text-white translate-x-0.5" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M8 5v14l11-7z" />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
               <span className="absolute top-3 left-3 w-4 h-4 border-t border-l border-[#0066ff]/60 pointer-events-none z-10" />
               <span className="absolute top-3 right-3 w-4 h-4 border-t border-r border-[#0066ff]/60 pointer-events-none z-10" />

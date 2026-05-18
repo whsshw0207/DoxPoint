@@ -199,8 +199,8 @@ export default function Hero() {
 
       {/* Radial glow */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] rounded-full bg-[#0066ff] opacity-[0.04] blur-[120px]" style={{ willChange: 'transform' }} />
-        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-[#0066ff] opacity-[0.03] blur-[100px]" style={{ willChange: 'transform' }} />
+        <div className="absolute top-1/4 left-1/4 max-w-[600px] max-h-[600px] w-full h-full rounded-full bg-[#0066ff] opacity-[0.04] blur-[120px]" style={{ willChange: 'transform' }} />
+        <div className="absolute bottom-1/4 right-1/4 max-w-[400px] max-h-[400px] w-full h-full rounded-full bg-[#0066ff] opacity-[0.03] blur-[100px]" style={{ willChange: 'transform' }} />
       </div>
 
       {/* Content */}
