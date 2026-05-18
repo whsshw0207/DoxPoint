@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { GoogleAnalytics } from '@next/third-parties/google'
-import { Archivo } from 'next/font/google'
+import { Archivo, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 
 const archivo = Archivo({
@@ -8,6 +8,13 @@ const archivo = Archivo({
   weight: ['400', '700', '900'],
   style: ['normal', 'italic'],
   variable: '--font-archivo',
+  display: 'swap',
+})
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  variable: '--font-jetbrains-mono',
   display: 'swap',
 })
 
@@ -41,7 +48,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="ko" className={`dark ${archivo.variable}`}>
+    <html lang="ko" className={`dark ${archivo.variable} ${jetbrainsMono.variable}`}>
       <head>
         <link rel="icon" href="/favicon.png" type="image/png" />
         <link rel="shortcut icon" href="/favicon.png" type="image/png" />
