@@ -15,7 +15,7 @@ function FadeUp({
   className?: string
 }) {
   const ref = useRef<HTMLDivElement>(null)
-  const inView = useInView(ref, { once: true, margin: '-80px' })
+  const inView = useInView(ref, { once: true, margin: '-40px' })
   return (
     <motion.div
       ref={ref}
@@ -417,7 +417,7 @@ function EmpathyBanner() {
 export default function AboutDox() {
   return (
     <section id="about" className="relative pt-[3.25rem] pb-24 md:pt-[4.875rem] md:pb-32 bg-bg overflow-hidden">
-      <div className="absolute top-1/3 right-0 w-[500px] h-[500px] bg-[#0066ff] opacity-[0.03] blur-[120px] rounded-full pointer-events-none" />
+      <div className="hidden lg:block absolute top-1/3 right-0 w-[500px] h-[500px] bg-[#0066ff] opacity-[0.03] blur-[120px] rounded-full pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <CoachIntro />

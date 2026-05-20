@@ -18,7 +18,7 @@ export default function CTASection() {
           backgroundSize: '32px 32px',
         }}
       />
-      <div className="absolute top-1/2 left-1/3 -translate-y-1/2 w-[600px] h-[600px] bg-[#0066ff] opacity-[0.03] blur-[120px] rounded-full pointer-events-none" />
+      <div className="hidden lg:block absolute top-1/2 left-1/3 -translate-y-1/2 w-[600px] h-[600px] bg-[#0066ff] opacity-[0.03] blur-[120px] rounded-full pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div

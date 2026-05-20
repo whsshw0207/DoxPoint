@@ -16,7 +16,7 @@ function FadeUp({
   className?: string
 }) {
   const ref = useRef<HTMLDivElement>(null)
-  const inView = useInView(ref, { once: true, margin: '-80px' })
+  const inView = useInView(ref, { once: true, margin: '-40px' })
   return (
     <motion.div
       ref={ref}
@@ -170,7 +170,7 @@ function SvgRadar() {
 
 function SkillMap() {
   const ref = useRef<HTMLDivElement>(null)
-  const inView = useInView(ref, { once: true, margin: '-80px' })
+  const inView = useInView(ref, { once: true, margin: '-40px' })
 
   return (
     <FadeUp>
@@ -590,7 +590,7 @@ export default function Coaching() {
   return (
     <section id="coaching" className="relative py-24 md:py-32 bg-bg overflow-hidden">
       {/* 배경 글로우 */}
-      <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-[#0066ff] opacity-[0.03] blur-[120px] rounded-full -translate-y-1/2 pointer-events-none" />
+      <div className="hidden lg:block absolute top-1/2 left-0 w-[500px] h-[500px] bg-[#0066ff] opacity-[0.03] blur-[120px] rounded-full -translate-y-1/2 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
         {/* 섹션 헤더 */}

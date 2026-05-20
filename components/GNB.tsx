@@ -131,7 +131,7 @@ export default function GNB() {
             animate={{ opacity: 1, clipPath: 'inset(0 0 0% 0)' }}
             exit={{ opacity: 0, clipPath: 'inset(0 0 100% 0)' }}
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 z-40 bg-[#0a0c12]/95 backdrop-blur-3xl flex flex-col items-center justify-center"
+            className="fixed inset-0 z-40 bg-[#0a0c12]/98 backdrop-blur-md flex flex-col items-center justify-center"
           >
             {/* Grid overlay */}
             <div className="absolute inset-0 bg-grid-pattern bg-grid-40 opacity-30" />

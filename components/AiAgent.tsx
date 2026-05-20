@@ -423,7 +423,7 @@ export default function HeroMatcher() {
   const hero = step === 6 && position ? getHero(position, answers) : null
 
   const headerRef = useRef<HTMLDivElement>(null)
-  const headerInView = useInView(headerRef, { once: true, margin: '-80px' })
+  const headerInView = useInView(headerRef, { once: true, margin: '-40px' })
 
   return (
     <section id="hero-matcher" className="relative py-10 md:py-12 bg-[#0a0c12] overflow-hidden">
@@ -436,7 +436,7 @@ export default function HeroMatcher() {
         }}
       />
       {/* BG glow */}
-      <div className="absolute top-1/2 right-0 w-[500px] h-[500px] bg-[#0066ff] opacity-[0.03] blur-[120px] rounded-full -translate-y-1/2 pointer-events-none" />
+      <div className="hidden lg:block absolute top-1/2 right-0 w-[500px] h-[500px] bg-[#0066ff] opacity-[0.03] blur-[120px] rounded-full -translate-y-1/2 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}

@@ -162,7 +162,7 @@ export default function Reviews() {
       `}</style>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }} className="mb-5">
+        <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-40px' }} transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }} className="mb-5">
           <div className="flex items-center gap-3 mb-3">
             <span className="w-8 h-px bg-[#0066ff]" />
             <span className="typo-eyebrow text-[#0066ff]">REVIEWS</span>
