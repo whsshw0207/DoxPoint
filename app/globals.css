@@ -1,4 +1,4 @@
-@import 'pretendard/dist/web/static/pretendard-dynamic-subset.css';
+@import 'pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css';
 
 @tailwind base;
 @tailwind components;
