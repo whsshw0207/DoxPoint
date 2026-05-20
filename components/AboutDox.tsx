@@ -82,7 +82,7 @@ function CoachIntro() {
                 alt="DOX 코치"
                 fill
                 priority
-                quality={80}
+                quality={72}
                 sizes="(min-width: 1024px) 384px, 100vw"
                 placeholder="blur"
                 blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=="
@@ -392,7 +392,7 @@ function EmpathyBanner() {
         alt="배너"
         width={1920}
         height={800}
-        quality={80}
+        quality={70}
         loading="lazy"
         sizes="100vw"
         style={{width:'100%', height:'auto', display:'block', objectFit:'contain', background:'transparent'}}

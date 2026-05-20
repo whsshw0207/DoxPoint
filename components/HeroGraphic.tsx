@@ -1,5 +1,6 @@
 'use client'
 
+import '@/hero_graphic.css'
 import { useState, useEffect, useRef, useMemo } from 'react'
 
 interface HeroGraphicProps {
