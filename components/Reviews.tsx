@@ -178,7 +178,7 @@ export default function Reviews() {
                   <div className="flex items-end justify-center gap-5" style={isMobile ? { paddingTop: 10 } : {}}>
                     <div className="flex flex-col items-center" style={{ gap: 0 }}>
                       <TierImage tier={r.fromTier} size={isMobile ? 66 : 123} />
-                      <span className="font-bold" style={{ color: '#ffffff', marginTop: 0, fontSize: isMobile ? 13 : 14 }}>{r.fromTier}</span>
+                      <span className={`font-bold ${r.fromTier.replace(/\s/g, '').length > 5 ? 'text-xs' : 'text-sm'}`} style={{ color: '#ffffff', marginTop: 0 }}>{r.fromTier.replace(/\s/g, '')}</span>
                     </div>
                     <svg width={24} height={48} viewBox="0 0 24 48" fill="none"
                       style={{ flexShrink: 0, alignSelf: 'center' }}>
@@ -200,7 +200,7 @@ export default function Reviews() {
                     </svg>
                     <div className="flex flex-col items-center" style={{ gap: 0 }}>
                       <TierImage tier={r.toTier} size={isMobile ? 66 : 148} />
-                      <span className="font-bold" style={{ color: '#ffffff', marginTop: 0, fontSize: isMobile ? 13 : 14 }}>{r.toTier}</span>
+                      <span className={`font-bold ${r.toTier.replace(/\s/g, '').length > 5 ? 'text-xs' : 'text-sm'}`} style={{ color: '#ffffff', marginTop: 0 }}>{r.toTier.replace(/\s/g, '')}</span>
                     </div>
                   </div>
                   <p className="typo-body-sm text-gray-400 flex-1" style={{ marginTop: 7, display: "-webkit-box", WebkitLineClamp: isMobile ? 3 : 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}>{r.review}</p>
