@@ -121,67 +121,140 @@ const QUESTIONS: Record<Position, Question[]> = {
 }
 
 const TANK_HEROES: Record<string, HeroResult> = {
-  AAAA: { name: '둠피스트',   desc: '무지성 돌격, 피지컬 캐리의 화신' },
-  AAAB: { name: '해저드',     desc: '저돌적인 진입 후 연계' },
-  AABA: { name: '로드호그',   desc: '변수 창출' },
-  AABB: { name: '레킹볼',     desc: '진형 붕괴 특화' },
-  ABAA: { name: '윈스턴',     desc: '어그로 핑퐁 및 진입' },
-  ABAB: { name: 'D.Va',       desc: '유동적인 커버와 다이브' },
-  ABBA: { name: '로드호그',   desc: '변수 창출' },
-  ABBB: { name: '라인하르트', desc: '본대 보호의 정석' },
-  BAAA: { name: '정커퀸',     desc: '공격적인 전방 압박' },
-  BAAB: { name: '마우가',     desc: '압도적 화력방어' },
-  BABA: { name: '라마트라',   desc: '스킬 분배와 자리 유지' },
-  BABB: { name: '자리야',     desc: '아군 보호와 턴 쓰기' },
-  BBAA: { name: '도미나',     desc: '전방 딜탱 역할' },
-  BBAB: { name: '자리야',     desc: '아군 보호와 턴 쓰기' },
-  BBBA: { name: '오리사',     desc: '단단한 라인 유지' },
-  BBBB: { name: '시그마',     desc: '완벽한 스킬 분배와 수비' },
+  AAAA: { name: '마우가',     desc: '압도적인 화력과 돌파력으로 전장의 흐름을 통째로 휩쓰는 호전적인 전차' },
+  AAAB: { name: '해저드',     desc: '거침없이 진입해 전장을 뒤흔들고 아군의 길을 열어주는 선봉장' },
+  AABA: { name: '로드호그',   desc: '자립심이 강해 의료 지원 없이도 자가 회복하며 변수를 창출하는 독립형 사냥꾼' },
+  AABB: { name: '둠피스트',   desc: '강력한 주먹 하나로 적진을 붕괴시키고 변수를 만드는 전술가' },
+  ABAA: { name: '정커퀸',     desc: '치명적인 출혈과 외침으로 적의 진형을 무너뜨리는 거침없는 돌격대장' },
+  ABAB: { name: 'D.Va',       desc: '부스터의 기동력과 매트릭스를 활용해 공수를 자유자재로 오가는 만능 기동 타격대' },
+  ABBA: { name: '레킹볼',     desc: '본대와 떨어져 뛰어난 기동력으로 적진을 누비며 진형을 뒤흔드는 전장의 별동대' },
+  ABBB: { name: '라인하르트', desc: '거대한 방벽으로 아군을 수호하고 묵직한 망치로 적을 휩쓰는 정통파 탱커' },
+  BAAA: { name: '윈스턴',     desc: '뛰어난 학식과 도약력을 활용해 적의 진영을 가르는 지능형 탱커' },
+  BAAB: { name: '자리야',     desc: '위기를 기회(에너지)로 치환하며 전투의 판도를 완전히 뒤집는 잠재력의 소유자' },
+  BABA: { name: '라마트라',   desc: '상황에 맞춰 형태를 변환하며 전투의 템포를 완벽히 지배하는 혁명가' },
+  BABB: { name: '도미나',     desc: '탱커의 체급과 딜러의 야망, 섹시함까지 겸비한 포지션 초월자' },
+  BBAA: { name: '오리사',     desc: '자리를 잡는 순간 그 어떤 공격에도 절대 밀리지 않는 철벽의 수호자' },
+  BBAB: { name: '라인하르트', desc: '거대한 방벽으로 아군을 수호하고 묵직한 망치로 적을 휩쓰는 정통파 탱커' },
+  BBBA: { name: '자리야',     desc: '위기를 기회(에너지)로 치환하며 전투의 판도를 완전히 뒤집는 잠재력의 소유자' },
+  BBBB: { name: '시그마',     desc: '중력을 다스리며 상대의 모든 공격을 완전히 틀어막는 완벽주의 지휘관' },
 }
 
 const DPS_HEROES: Record<string, HeroResult> = {
-  AAAA: { name: '겐지 / 트레이서',     desc: '순수 피지컬 암살' },
-  AAAB: { name: '솜브라',              desc: '지능적인 해킹 암살' },
-  AABA: { name: '위도우메이커',        desc: '정밀 저격' },
-  AABB: { name: '한조',                desc: '변수 창출 저격' },
-  ABAA: { name: '에코 / 파라',         desc: '입체적인 기동 타격' },
-  ABAB: { name: '시에라 / 안란',       desc: '스킬 연계 암살' },
-  ABBA: { name: '리퍼',                desc: '과감한 진입과 맞딜' },
-  ABBB: { name: '메이',                desc: '팀플레이와 지능적 수비' },
-  BAAA: { name: '캐서디',              desc: '든든한 본대 딜러' },
-  BAAB: { name: '애쉬 / 소전',         desc: '정석적인 딜각 창출' },
-  BABA: { name: '정크랫 / 엠레',       desc: '진형 파괴와 스팸' },
-  BABB: { name: '바스티온 / 프레야',   desc: '압도적 화력 쏟아붓기' },
-  BBAA: { name: '솔저: 76',            desc: '지속 딜링' },
-  BBAB: { name: '바스티온 / 프레야',   desc: '압도적 화력 쏟아붓기' },
-  BBBA: { name: '시메트라 / 토르비욘', desc: '설치물 기반 수비' },
-  BBBB: { name: '시메트라 / 토르비욘', desc: '설치물 기반 수비' },
+  AAAA: { name: '위도우메이커 / 한조',   desc: '치명적인 한 발로 적의 숨통을 끊어버리는 냉혹한 전장의 저격수' },
+  AAAB: { name: '겐지',                  desc: '치명적인 기습으로 적의 숨통을 확실하게 끊어버리는 암살자' },
+  AABA: { name: '트레이서 / 안란',       desc: '기동성과 피지컬로 상대 멘탈을 흔드는 신출귀몰한 스피드스터' },
+  AABB: { name: '리퍼',                  desc: '그림자처럼 조용히 잠입해 적진 한가운데서 궁을 집전하는 극적 연출의 대가' },
+  ABAA: { name: '솜브라',                desc: '은신과 해킹 하나로 상대의 연계를 소리 없이 끊어내는 정보전의 설계자' },
+  ABAB: { name: '벤처',                  desc: '땅을 파고들어 진입한 뒤 적을 교란시키고 진형을 붕괴시키는 땅굴 돌격대' },
+  ABBA: { name: '메이',                  desc: '빙벽 하나로 전장의 지형을 재설계하고 상대의 진입을 차단하는 공간 장악형 전문가' },
+  ABBB: { name: '바스티온 / 정크랫',     desc: '끊임없는 포격과 무자비한 화력 투사로 눈앞의 모든 방어선을 초토화하는 화력 병기' },
+  BAAA: { name: '애쉬',                  desc: '충분한 딜각을 확보한 후 확실하게 방아쇠를 당기는 저격 원칙주의자' },
+  BAAB: { name: '솔저: 76 / 소전',       desc: '기동성과 정밀한 트래킹 에임으로 상대를 숨 막히게 압박하는 히트스캔 전문가' },
+  BABA: { name: '프레야 / 시에라',       desc: '남들은 흉내 낼 수 없는 세련된 유틸리티 사격으로 적을 제압하는 감각적인 트릭스터' },
+  BABB: { name: '캐서디',                desc: '불리한 상황에서도 묵직한 단발 에임과 결정적 하이눈으로 판을 뒤집는 카우보이' },
+  BBAA: { name: '에코 / 파라',           desc: '상공을 자유롭게 장악하며 폭발적인 화력을 쏟아붓는 전장의 공중 지배자' },
+  BBAB: { name: '벤데타',                desc: '상대의 빈틈을 포착하면 매서운 기세로 몰아쳐 적을 파괴하는 전사' },
+  BBBA: { name: '시메트라 / 토르비욘',   desc: '설치 완료 후 여유롭게 결과를 관람하는 설계 기반 플레이어' },
+  BBBB: { name: '엠레',                  desc: '묵직한 전투 감각과 전술적 판단으로 전장의 밸런스를 맞추는 베테랑 작전 요원' },
 }
 
 const SUPPORT_HEROES: Record<string, HeroResult> = {
-  AAAA: { name: '라이프위버',       desc: '최후방 극강의 아군 세이브' },
-  AAAB: { name: '메르시',           desc: '안전한 포지션에서 퓨어 힐' },
-  AABA: { name: '아나',             desc: '수면총 등 유틸과 강력한 힐' },
-  AABB: { name: '젠야타',           desc: '최후방 딜 지원 및 카운터 궁' },
-  ABAA: { name: '주노 / 미즈키',    desc: '기동성 기반 힐 지원' },
-  ABAB: { name: '일리아리',         desc: '딜러형 서포터' },
-  ABBA: { name: '아나',             desc: '수면총 등 유틸과 강력한 힐' },
-  ABBB: { name: '젠야타',           desc: '최후방 딜 지원 및 카운터 궁' },
-  BAAA: { name: '키리코',           desc: '순간 합류와 정화 변수' },
-  BAAB: { name: '키리코',           desc: '순간 합류와 정화 변수' },
-  BABA: { name: '우앙 / 제트팩 캣', desc: '변수 창출 및 유틸' },
-  BABB: { name: '바티스트',         desc: '전방 화력 지원과 불사 장치' },
-  BBAA: { name: '루시우',           desc: '전방 이속 버프와 찰싹 붙기' },
-  BBAB: { name: '브리기테',         desc: '전방 아군 밀착 보호' },
-  BBBA: { name: '루시우',           desc: '전방 이속 버프와 찰싹 붙기' },
-  BBBB: { name: '모이라',           desc: '생존력 갑, 전방 힐딜 밸런스' },
+  AAAA: { name: '메르시',     desc: '적의 집중 포화를 우아하게 흘려내며, 킬보다 부활에서 희열을 느끼는 진정한 수호천사' },
+  AAAB: { name: '라이프위버', desc: '아군이 사망하기 0.1초 전, 완벽한 타이밍에 낚아채 구출해 내는 타이밍의 예술가' },
+  AABA: { name: '아나',       desc: '정밀한 수면총과 생체 수류탄 한 방으로 한타를 완벽하게 재편하는 전장의 총괄 디렉터' },
+  AABB: { name: '아나',       desc: '정밀한 수면총과 생체 수류탄 한 방으로 한타를 완벽하게 재편하는 전장의 총괄 디렉터' },
+  ABAA: { name: '주노',       desc: '매끄러운 궤도 비행과 하이퍼 링을 활용해 아군의 진격 템포를 화끈하게 밀어주는 궤도형 서포터' },
+  ABAB: { name: '미즈키',     desc: '독창적인 유틸리티와 세련된 버프로 나만의 타이밍에 전황을 보좌하는 감각적인 조율사' },
+  ABBA: { name: '젠야타',     desc: '힐러의 탈을 쓴 채, 부조화 구슬로 딜러보다 더 매서운 딜을 뽑아내는 무력파 구도자' },
+  ABBB: { name: '키리코',     desc: '날카로운 쿠나이로 적을 위협하고 방울로 위기의 아군을 구하는 전장의 구원투수' },
+  BAAA: { name: '키리코',     desc: '날카로운 쿠나이로 적을 위협하고 방울로 위기의 아군을 구하는 전장의 구원투수' },
+  BAAB: { name: '우양',       desc: '뻔한 플레이를 거부하고, 예측 불가한 변칙적인 움직임으로 적팀의 설계를 무력화하는 지략가' },
+  BABA: { name: '제트팩 캣', desc: '평범한 시야를 벗어난 3차원 공중 동선으로 적의 허를 찌르고 교란하는 변수 창출자' },
+  BABB: { name: '바티스트',   desc: '불사 장치 하나로 죽음마저 통제하며 묵직한 딜과 힐을 동시에 뿜어내는 전장의 엔지니어' },
+  BBAA: { name: '루시우',     desc: '자유롭게 전장을 누비고 속도 버프와 비트로 팀의 진격 템포를 지배하는 전장의 DJ' },
+  BBAB: { name: '브리기테',   desc: '방패를 들고 전방으로 돌진하는 힐러계의 이단아' },
+  BBBA: { name: '일리아리',   desc: '귀찮은 힐은 태양석에 위임하고, 본인은 치명적인 사격과 딜에 전념하는 파괴적인 효율주의자' },
+  BBBB: { name: '모이라',     desc: '과학의 이름으로 힐과 딜, 생존까지 내 손으로 직접 해결하는 합리주의자' },
+}
+
+/* ─── Hero colors ─── */
+const HERO_COLORS: Record<string, { from: string; to?: string }> = {
+  // Tank
+  '마우가':     { from: '#8C5D49' },
+  '해저드':     { from: '#7726DA' },
+  '로드호그':   { from: '#C99A52' },
+  '둠피스트':   { from: '#8A5A4E' },
+  '정커퀸':     { from: '#54A6D0' },
+  'D.Va':       { from: '#F08AD8' },
+  '레킹볼':     { from: '#D89A3A' },
+  '라인하르트': { from: '#BFC4C7' },
+  '윈스턴':     { from: '#9FA8DA' },
+  '자리야':     { from: '#E56BB5' },
+  '라마트라':   { from: '#7833B5' },
+  '도미나':     { from: '#E9C571' },
+  '오리사':     { from: '#4CAF50' },
+  '시그마':     { from: '#9EA7B3' },
+  // DPS
+  '위도우메이커 / 한조': { from: '#A76ACF', to: '#CFC76A' },
+  '겐지':                { from: '#8CF24A' },
+  '트레이서 / 안란':     { from: '#E59A3A', to: '#F1831A' },
+  '리퍼':                { from: '#8E5C5C' },
+  '솜브라':              { from: '#7B4DDB' },
+  '벤처':                { from: '#DEC11A' },
+  '메이':                { from: '#5EA8FF' },
+  '바스티온 / 정크랫':   { from: '#A7C9A1', to: '#E2B93B' },
+  '애쉬':                { from: '#A9A9A3' },
+  '솔저: 76 / 소전':     { from: '#4E5FAF', to: '#B7B094' },
+  '프레야 / 시에라':     { from: '#B0FFFF', to: '#9B2337' },
+  '캐서디':              { from: '#C75F5F' },
+  '에코 / 파라':         { from: '#8FD8FF', to: '#3D7BDB' },
+  '벤데타':              { from: '#C43E41' },
+  '시메트라 / 토르비욘': { from: '#59C7E6', to: '#C96B6B' },
+  '엠레':                { from: '#B04124' },
+  // Support
+  '메르시':     { from: '#E8DFAF' },
+  '라이프위버': { from: '#FDD6D8' },
+  '아나':       { from: '#6F8FCF' },
+  '주노':       { from: '#DF76EE' },
+  '미즈키':     { from: '#0C7479' },
+  '젠야타':     { from: '#E5E06B' },
+  '키리코':     { from: '#D04856' },
+  '우양':       { from: '#1D86E2' },
+  '제트팩 캣': { from: '#D0A57C' },
+  '바티스트':   { from: '#4FC3E6' },
+  '루시우':     { from: '#8CE34A' },
+  '브리기테':   { from: '#C96B6B' },
+  '일리아리':   { from: '#F0DA82' },
+  '모이라':     { from: '#8B52E8' },
+}
+
+/* ─── Color helpers ─── */
+function hexToRgba(hex: string, alpha: number): string {
+  const r = parseInt(hex.slice(1, 3), 16)
+  const g = parseInt(hex.slice(3, 5), 16)
+  const b = parseInt(hex.slice(5, 7), 16)
+  return `rgba(${r},${g},${b},${alpha})`
+}
+
+function darkenHex(hex: string, factor = 0.45): string {
+  const r = parseInt(hex.slice(1, 3), 16)
+  const g = parseInt(hex.slice(3, 5), 16)
+  const b = parseInt(hex.slice(5, 7), 16)
+  const h = (n: number) => Math.round(n * factor).toString(16).padStart(2, '0')
+  return `#${h(r)}${h(g)}${h(b)}`
+}
+
+function getHeroGradient(heroName: string): { from: string; to: string } {
+  const c = HERO_COLORS[heroName]
+  if (!c) return { from: '#0066ff', to: '#003388' }
+  return { from: c.from, to: c.to ?? darkenHex(c.from) }
 }
 
 function getHero(position: Position, answers: string[]): HeroResult {
   const key = answers.join('')
-  if (position === 'tank')    return TANK_HEROES[key]    ?? { name: '라인하르트', desc: '본대 보호의 정석' }
-  if (position === 'dps')     return DPS_HEROES[key]     ?? { name: '솔저: 76',    desc: '지속 딜링' }
-  return SUPPORT_HEROES[key] ?? { name: '메르시',         desc: '안전한 포지션에서 퓨어 힐' }
+  if (position === 'tank')    return TANK_HEROES[key]    ?? { name: '라인하르트', desc: '거대한 방벽으로 아군을 수호하고 묵직한 망치로 적을 휩쓰는 정통파 탱커' }
+  if (position === 'dps')     return DPS_HEROES[key]     ?? { name: '솔저: 76 / 소전', desc: '기동성과 정밀한 트래킹 에임으로 상대를 숨 막히게 압박하는 히트스캔 전문가' }
+  return SUPPORT_HEROES[key] ?? { name: '메르시', desc: '적의 집중 포화를 우아하게 흘려내며, 킬보다 부활에서 희열을 느끼는 진정한 수호천사' }
 }
 
 /* ─── Animation variants ─── */
@@ -300,59 +373,84 @@ function ResultScreen({
   answers: string[]
   onReset: () => void
 }) {
+  const { from, to } = getHeroGradient(hero.name)
+
   return (
     <motion.div key="result" variants={fade} initial="initial" animate="animate" exit="exit" className="flex flex-col gap-8">
-      <p className="text-xs font-bold tracking-[0.3em] text-white/30 uppercase">당신의 영혼의 영웅 메이트는...</p>
+      <p className="text-xs font-bold tracking-[0.3em] text-white/30 uppercase">옵BTI 결과.</p>
 
-      {/* Hero card */}
+      {/* Gradient border wrapper */}
       <div
-        className="relative overflow-hidden p-8 bg-[#0d0f18] border border-[#0066ff]/25"
         style={{
+          padding: '1px',
+          background: `linear-gradient(135deg, ${from}, ${to})`,
           clipPath: 'polygon(14px 0%,100% 0%,100% calc(100% - 14px),calc(100% - 14px) 100%,0% 100%,0% 14px)',
-          boxShadow: '0 0 60px rgba(0,102,255,0.08)',
+          boxShadow: `0 0 60px ${hexToRgba(from, 0.12)}`,
         }}
       >
-        {/* bg grid */}
+        {/* Hero card */}
         <div
-          className="absolute inset-0 pointer-events-none opacity-[0.18]"
+          className="relative overflow-hidden p-8 bg-[#0d0f18]"
           style={{
-            backgroundImage: 'linear-gradient(rgba(0,102,255,0.07) 1px,transparent 1px),linear-gradient(90deg,rgba(0,102,255,0.07) 1px,transparent 1px)',
-            backgroundSize: '28px 28px',
+            clipPath: 'polygon(14px 0%,100% 0%,100% calc(100% - 14px),calc(100% - 14px) 100%,0% 100%,0% 14px)',
           }}
-        />
-        {/* top glow */}
-        <div className="absolute -top-8 left-1/2 -translate-x-1/2 w-64 h-48 bg-[#0066ff] opacity-[0.08] blur-[60px] rounded-full pointer-events-none" />
-        {/* top accent line */}
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#0066ff]/60 to-transparent" />
+        >
+          {/* bg grid */}
+          <div
+            className="absolute inset-0 pointer-events-none opacity-[0.18]"
+            style={{
+              backgroundImage: `linear-gradient(${hexToRgba(from, 0.07)} 1px,transparent 1px),linear-gradient(90deg,${hexToRgba(from, 0.07)} 1px,transparent 1px)`,
+              backgroundSize: '28px 28px',
+            }}
+          />
+          {/* top center glow */}
+          <div
+            className="absolute -top-8 left-1/2 -translate-x-1/2 w-64 h-48 opacity-[0.08] blur-[60px] rounded-full pointer-events-none"
+            style={{ backgroundColor: from }}
+          />
+          {/* top accent line */}
+          <div
+            className="absolute top-0 left-0 right-0 h-px pointer-events-none"
+            style={{ background: `linear-gradient(90deg, transparent, ${hexToRgba(from, 0.6)}, transparent)` }}
+          />
 
-        <div className="relative">
-          <motion.h2
-            initial={{ opacity: 0, scale: 0.92 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.15, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="text-4xl sm:text-5xl font-black text-[#0066ff] mb-3 leading-tight"
-            style={{ letterSpacing: '-0.03em', textShadow: '0 0 40px rgba(0,102,255,0.45)' }}
-          >
-            {hero.name}
-          </motion.h2>
+          <div className="relative">
+            <motion.h2
+              initial={{ opacity: 0, scale: 0.92 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.15, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              className="text-4xl sm:text-5xl font-black mb-3 leading-tight"
+              style={{
+                letterSpacing: '-0.03em',
+                background: `linear-gradient(135deg, ${from}, ${to})`,
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                filter: `drop-shadow(0 0 18px ${hexToRgba(from, 0.55)})`,
+              }}
+            >
+              {hero.name}
+            </motion.h2>
 
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.35, duration: 0.4 }}
-            className="text-sm text-white/50 leading-relaxed mb-6"
-          >
-            {hero.desc}
-          </motion.p>
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.35, duration: 0.4 }}
+              className="text-sm text-white/50 leading-relaxed mb-6"
+            >
+              {hero.desc}
+            </motion.p>
 
-          <motion.span
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.55, duration: 0.4 }}
-            className="text-[10px] font-mono tracking-[0.25em] text-[#0066ff]/35 uppercase"
-          >
-            {POSITION_LABEL[position]} · {answers.join('')}
-          </motion.span>
+            <motion.span
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.55, duration: 0.4 }}
+              className="text-[10px] font-mono tracking-[0.25em] uppercase"
+              style={{ color: hexToRgba(from, 0.45) }}
+            >
+              {POSITION_LABEL[position]} · {answers.join('')}
+            </motion.span>
+          </div>
         </div>
       </div>
 
@@ -449,13 +547,13 @@ export default function HeroMatcher() {
         >
           <div className="flex items-center gap-3 mb-3">
             <span className="w-8 h-px bg-[#0066ff]" />
-            <span className="text-xs font-bold tracking-widest text-[#0066ff] uppercase">FIND YOUR HERO</span>
+            <span className="text-xs font-bold tracking-widest text-[#0066ff] uppercase">OW+BTI</span>
           </div>
           <h2 className="text-3xl md:text-4xl font-black text-white mb-2" style={{ letterSpacing: '-0.02em' }}>
-            나의 영혼의 영웅 메이트 찾기
+            옵BTI — 숨겨진 모스트 찾기
           </h2>
           <p className="text-sm text-white/45">
-            당신의 플레이 스타일에 꼭 맞는 오버워치 영웅을 찾아드립니다
+            내 플레이 스타일이랑 핏(Fit)이 딱 맞는 운명의 영웅은?
           </p>
         </motion.div>
 
