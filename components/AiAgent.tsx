@@ -426,7 +426,7 @@ function ResultScreen({
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
-                filter: `drop-shadow(0 0 18px ${hexToRgba(from, 0.55)})`,
+                filter: `drop-shadow(0 0 20px ${hexToRgba(from, 0.25)})`,
               }}
             >
               {hero.name}
