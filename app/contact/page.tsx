@@ -215,6 +215,7 @@ export default function ContactPage() {
                     className="w-full bg-[#0d0f18] border border-white/[0.08] text-white text-base px-4 py-2 placeholder-white/20 focus:outline-none focus:border-[#0066ff]/60 transition-colors duration-200"
                     style={{
                       clipPath: 'polygon(8px 0%,100% 0%,100% calc(100% - 8px),calc(100% - 8px) 100%,0% 100%,0% 8px)',
+                      fontSize: '16px',
                     }}
                   />
                 </div>
@@ -262,6 +263,7 @@ export default function ContactPage() {
                     className="w-full bg-[#0d0f18] border border-white/[0.08] text-white text-base px-4 py-2 placeholder-white/20 focus:outline-none focus:border-[#0066ff]/60 transition-colors duration-200 resize-none"
                     style={{
                       clipPath: 'polygon(8px 0%,100% 0%,100% calc(100% - 8px),calc(100% - 8px) 100%,0% 100%,0% 8px)',
+                      fontSize: '16px',
                     }}
                   />
                 </div>
@@ -281,6 +283,7 @@ export default function ContactPage() {
                     className="w-full bg-[#0d0f18] border border-white/[0.08] text-white text-base px-4 py-2 placeholder-white/20 focus:outline-none focus:border-[#0066ff]/60 transition-colors duration-200"
                     style={{
                       clipPath: 'polygon(8px 0%,100% 0%,100% calc(100% - 8px),calc(100% - 8px) 100%,0% 100%,0% 8px)',
+                      fontSize: '16px',
                     }}
                   />
                 </div>
