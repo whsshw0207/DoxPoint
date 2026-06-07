@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useLayoutEffect } from 'react'
 import { motion, useInView } from 'framer-motion'
 import GNB from '@/components/GNB'
 
@@ -57,8 +57,8 @@ export default function ContactPage() {
   })
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
   const [copied, setCopied] = useState(false)
-  const [isMobile, setIsMobile] = useState(true)
-  useEffect(() => { setIsMobile(window.innerWidth < 768) }, [])
+  const [isMobile, setIsMobile] = useState(false)
+  useLayoutEffect(() => { setIsMobile(window.innerWidth < 768) }, [])
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -212,7 +212,7 @@ export default function ContactPage() {
                     onChange={handleChange}
                     placeholder="예) 다이아 1 / 골드 2"
                     required
-                    className="w-full bg-[#0d0f18] border border-white/[0.08] text-white text-sm px-4 py-2 placeholder-white/20 focus:outline-none focus:border-[#0066ff]/60 transition-colors duration-200"
+                    className="w-full bg-[#0d0f18] border border-white/[0.08] text-white text-base px-4 py-2 placeholder-white/20 focus:outline-none focus:border-[#0066ff]/60 transition-colors duration-200"
                     style={{
                       clipPath: 'polygon(8px 0%,100% 0%,100% calc(100% - 8px),calc(100% - 8px) 100%,0% 100%,0% 8px)',
                     }}
@@ -259,7 +259,7 @@ export default function ContactPage() {
                     placeholder="피드백 받고 싶은 이유 & 궁금한 사항을 자유롭게 적어주세요"
                     required
                     rows={3}
-                    className="w-full bg-[#0d0f18] border border-white/[0.08] text-white text-sm px-4 py-2 placeholder-white/20 focus:outline-none focus:border-[#0066ff]/60 transition-colors duration-200 resize-none"
+                    className="w-full bg-[#0d0f18] border border-white/[0.08] text-white text-base px-4 py-2 placeholder-white/20 focus:outline-none focus:border-[#0066ff]/60 transition-colors duration-200 resize-none"
                     style={{
                       clipPath: 'polygon(8px 0%,100% 0%,100% calc(100% - 8px),calc(100% - 8px) 100%,0% 100%,0% 8px)',
                     }}
@@ -278,7 +278,7 @@ export default function ContactPage() {
                     onChange={handleChange}
                     placeholder="예) player#1234"
                     required
-                    className="w-full bg-[#0d0f18] border border-white/[0.08] text-white text-sm px-4 py-2 placeholder-white/20 focus:outline-none focus:border-[#0066ff]/60 transition-colors duration-200"
+                    className="w-full bg-[#0d0f18] border border-white/[0.08] text-white text-base px-4 py-2 placeholder-white/20 focus:outline-none focus:border-[#0066ff]/60 transition-colors duration-200"
                     style={{
                       clipPath: 'polygon(8px 0%,100% 0%,100% calc(100% - 8px),calc(100% - 8px) 100%,0% 100%,0% 8px)',
                     }}
