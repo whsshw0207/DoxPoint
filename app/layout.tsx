@@ -22,7 +22,7 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: 'DOXPOINT | DOX.POINT — 오버워치 코칭',
   description: '같은 티어에서 1년째 막혔다면? 정체된 구간에는 이유가 있습니다. 감이 아닌 이해를 통해 지속 가능한 티어 상승을 설계합니다. DOXPOINT(독스포인트) 오버워치 전문 코칭.',
-  keywords: ['오버워치 코칭', '오버워치 과외', 'DOXPOINT', 'doxpoint', 'overwatch coaching', 'OW 코칭', '티어 상승'],
+  keywords: ['오버워치 코칭', '오버워치 과외', 'DOXPOINT', 'doxpoint', 'overwatch coaching', 'OW 코칭', '티어 상승', '독스포인트', '독스', 'dox', 'DOX', 'DOX.POINT', '오버워치', 'overwatch'],
   openGraph: {
     title: 'DOXPOINT | DOX.POINT — 오버워치 코칭',
     description: '같은 티어에서 1년째 막혔다면? 정체된 구간에는 이유가 있습니다. 감이 아닌 이해를 통해 지속 가능한 티어 상승을 설계합니다. DOXPOINT(독스포인트) 오버워치 전문 코칭.',

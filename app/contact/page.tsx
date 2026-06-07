@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { motion, useInView } from 'framer-motion'
 import GNB from '@/components/GNB'
 
@@ -25,13 +25,16 @@ function FadeUp({
   children,
   delay = 0,
   className = '',
+  isMobile = false,
 }: {
   children: React.ReactNode
   delay?: number
   className?: string
+  isMobile?: boolean
 }) {
   const ref = useRef<HTMLDivElement>(null)
   const inView = useInView(ref, { once: true, margin: '-60px' })
+  if (isMobile) return <div className={className}>{children}</div>
   return (
     <motion.div
       ref={ref}
@@ -54,6 +57,8 @@ export default function ContactPage() {
   })
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
   const [copied, setCopied] = useState(false)
+  const [isMobile, setIsMobile] = useState(true)
+  useEffect(() => { setIsMobile(window.innerWidth < 768) }, [])
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -103,15 +108,15 @@ export default function ContactPage() {
           }}
         />
         {/* BG glows */}
-        <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-[#0066ff] opacity-[0.04] blur-[130px] rounded-full pointer-events-none" />
-        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-[#0066ff] opacity-[0.03] blur-[100px] rounded-full pointer-events-none" />
+        {!isMobile && <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-[#0066ff] opacity-[0.04] blur-[130px] rounded-full pointer-events-none" />}
+        {!isMobile && <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-[#0066ff] opacity-[0.03] blur-[100px] rounded-full pointer-events-none" />}
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
 
             {/* ── LEFT: CONTACT INFO ── */}
             <div>
-              <FadeUp>
+              <FadeUp isMobile={isMobile}>
                 <div className="flex items-center gap-3 mb-4">
                   <span className="w-8 h-px bg-[#0066ff]" />
                   <span className="text-xs font-bold tracking-widest text-[#0066ff] uppercase">
@@ -133,7 +138,7 @@ export default function ContactPage() {
               </FadeUp>
 
               {/* Channel list */}
-              <FadeUp delay={0.1}>
+              <FadeUp delay={0.1} isMobile={isMobile}>
                 <div>
                   {CHANNELS.map((ch) => (
                     <a
@@ -180,7 +185,7 @@ export default function ContactPage() {
             </div>
 
             {/* ── RIGHT: FORM ── */}
-            <FadeUp delay={0.15}>
+            <FadeUp delay={0.15} isMobile={isMobile}>
               <div className="flex items-center gap-3 mb-4">
                 <span className="w-8 h-px bg-[#0066ff]" />
                 <span className="text-xs font-bold tracking-widest text-[#0066ff] uppercase">
@@ -209,8 +214,7 @@ export default function ContactPage() {
                     required
                     className="w-full bg-[#0d0f18] border border-white/[0.08] text-white text-sm px-4 py-2 placeholder-white/20 focus:outline-none focus:border-[#0066ff]/60 transition-colors duration-200"
                     style={{
-                      clipPath:
-                        'polygon(8px 0%,100% 0%,100% calc(100% - 8px),calc(100% - 8px) 100%,0% 100%,0% 8px)',
+                      clipPath: 'polygon(8px 0%,100% 0%,100% calc(100% - 8px),calc(100% - 8px) 100%,0% 100%,0% 8px)',
                     }}
                   />
                 </div>
@@ -230,8 +234,7 @@ export default function ContactPage() {
                           onClick={() => setForm((prev) => ({ ...prev, lessonType: type }))}
                           className="px-3 py-2 text-xs font-bold tracking-wide transition-all duration-200"
                           style={{
-                            clipPath:
-                              'polygon(6px 0%,100% 0%,100% calc(100% - 6px),calc(100% - 6px) 100%,0% 100%,0% 6px)',
+                            clipPath: 'polygon(6px 0%,100% 0%,100% calc(100% - 6px),calc(100% - 6px) 100%,0% 100%,0% 6px)',
                             background: selected ? 'rgba(0,102,255,0.14)' : '#0d0f18',
                             border: `1px solid ${selected ? 'rgba(0,102,255,0.65)' : 'rgba(255,255,255,0.08)'}`,
                             color: selected ? '#0066ff' : 'rgba(255,255,255,0.38)',
@@ -258,8 +261,7 @@ export default function ContactPage() {
                     rows={3}
                     className="w-full bg-[#0d0f18] border border-white/[0.08] text-white text-sm px-4 py-2 placeholder-white/20 focus:outline-none focus:border-[#0066ff]/60 transition-colors duration-200 resize-none"
                     style={{
-                      clipPath:
-                        'polygon(8px 0%,100% 0%,100% calc(100% - 8px),calc(100% - 8px) 100%,0% 100%,0% 8px)',
+                      clipPath: 'polygon(8px 0%,100% 0%,100% calc(100% - 8px),calc(100% - 8px) 100%,0% 100%,0% 8px)',
                     }}
                   />
                 </div>
@@ -278,8 +280,7 @@ export default function ContactPage() {
                     required
                     className="w-full bg-[#0d0f18] border border-white/[0.08] text-white text-sm px-4 py-2 placeholder-white/20 focus:outline-none focus:border-[#0066ff]/60 transition-colors duration-200"
                     style={{
-                      clipPath:
-                        'polygon(8px 0%,100% 0%,100% calc(100% - 8px),calc(100% - 8px) 100%,0% 100%,0% 8px)',
+                      clipPath: 'polygon(8px 0%,100% 0%,100% calc(100% - 8px),calc(100% - 8px) 100%,0% 100%,0% 8px)',
                     }}
                   />
                 </div>
@@ -290,8 +291,7 @@ export default function ContactPage() {
                   disabled={status === 'loading'}
                   className="w-full py-5 bg-[#0066ff] text-white font-black text-sm tracking-[0.15em] hover:bg-[#0052cc] active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
                   style={{
-                    clipPath:
-                      'polygon(10px 0%,100% 0%,100% calc(100% - 10px),calc(100% - 10px) 100%,0% 100%,0% 10px)',
+                    clipPath: 'polygon(10px 0%,100% 0%,100% calc(100% - 10px),calc(100% - 10px) 100%,0% 100%,0% 10px)',
                     boxShadow: '0 0 28px rgba(0,102,255,0.30)',
                   }}
                 >
