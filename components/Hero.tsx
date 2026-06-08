@@ -455,7 +455,7 @@ function DesktopHero() {
    Hero
 ─────────────────────────────────────────────── */
 export default function Hero() {
-  const [isMobile, setIsMobile] = useState(true)
+  const [isMobile, setIsMobile] = useState(false)
 
   useLayoutEffect(() => {
     setIsMobile(window.innerWidth < 1024)
