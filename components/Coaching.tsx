@@ -257,7 +257,7 @@ const BASIC_PRODUCTS = [
   { id: '1hour', name: '1시간 특강', price: '25,000원', desc: '빠른 원포인트 레슨', image: '/class/1시간.webp' },
   { id: '2hour', name: '2시간 특강', price: '45,000원', desc: '심화 분석 코칭', image: '/class/2시간.webp' },
   { id: 'short', name: '단기 특강', price: '120,000원', desc: '집중 단기 케어', image: '/class/단기특강_큰용량.webp' },
-  { id: 'group', name: '1:N 그룹 수업', price: '25,000원~', originalPrice: '35,000원~', eventBadge: '5월 이벤트 할인', desc: '소규모 그룹 코칭', image: '/class/그룹특강.webp' },
+  { id: 'group', name: '1:N 그룹 수업', price: '25,000원~', originalPrice: '35,000원~', eventBadge: '이벤트 할인', desc: '소규모 그룹 코칭', image: '/class/그룹특강.webp' },
 ]
 
 function PremiumCard({
