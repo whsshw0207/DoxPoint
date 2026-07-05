@@ -141,7 +141,7 @@ const groupClass: Product = {
   id: 'group',
   badge: null,
   name: '그룹 특강 · 1:N 팀워크 & 전략 마스터 클래스',
-  price: '듀오 2.5만 / +1명 당 5,000 KRW',
+  price: '듀오 3만 / +1명 당 5,000 KRW',
   eventBadge: '이벤트 할인',
   copy: '혼자서는 못 깨는 한계, 팀게임의 진짜 재미를 알려드립니다',
   desc: '팀 플레이의 정수를 배우고 싶은 분을 위한 그룹 코스. 개인 피지컬을 넘어 팀 합을 맞추는 법을 익힙니다.',
