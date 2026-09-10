@@ -53,6 +53,7 @@ const BOARD_REVIEWS: BoardReview[] = [
   { name: "반품된_**", rating: 5, review: "플레랑 다이아 사이에서 헤매이고 있었는데 길잡이가 되어주는 수업이였습니다. 꼼꼼하게 봐주시고 질문이 많아도 다 답해주셔서 백과사전 느낌이였습니다. 특히 에임에 대해 궁금한 점들이 있었는데 디테일하게 봐주시고 혼자서 연습해 볼 수 있게 피드백해주셨습니다" },
   { name: "신해영**", rating: 5, review: "너무 좋았습니다. 알려주신대로만 하니 다이아 딜러 상대로 압도하는 모습을 보였습니다. 감사합니다." },
   { name: "지존라이**", rating: 5, review: "후기가 없어서 처음엔 조금 걱정됐지만, 코치님의 경력사항을 보고 믿고 구매했습니다. 초반에 약간의 이슈가 있었지만 피드백을 바로 반영해주시고, 시간을 더 들여 꼼꼼히 알려주시는 모습이 인상 깊었습니다. 다음에는 더 좋은 강의로 다시 뵐 수 있을 것 같아 기대됩니다. 감사합니다!" },
+  { name: "_25**", rating: 5, review: "후기 남겼습니다. 솔직히 처음에는 너무 비싸다고 생각했었지만 후기가 좋으셔서 한번 받아보자는 생각으로 받아봤었는데 자세하고 이해하기 쉽게 설명해 주셨어서 다음에 기회가 되면 또 받아보고 싶습니다 감사합니다. 다음에는 다이아 찍고 오겠습니다" },
 ];
 
 const MARQUEE_REVIEWS: MarqueeReview[] = [
@@ -67,6 +68,10 @@ const MARQUEE_REVIEWS: MarqueeReview[] = [
   { name: "이멀**", rating: 5, review: "최근에 일이 생겨서 게임을 잘 못하다 그마 승급전까지 갔습니다", fromTier: "다이아 3", toTier: "마스터 1" },
   { name: "김애**", rating: 5, review: "안녕하세요! 확실히 게임이 수월해졌다는 느낌입니다. 예전에는 플3에서 서식했는데, 코칭 다음날 바로 플1까지는 올렸어요! 꼭 또 신청드리고 싶어요 감사합니다...!!", fromTier: "플레티넘 3", toTier: "플레티넘 1" },
   { name: "Sogu**", rating: 5, review: "실버5에서 골드2로 올랐습니다 감사합니다.", fromTier: "실버 5", toTier: "골드 2" },
+  { name: "문*", rating: 5, review: "마스터 달성했습니다! 알려주신대로 열심히 했더니 여기까지 오게되었네요 ㅎㅎ 앞으로도 꾸준히 연습해서 그마까지 갈 수 있도록 힘내보겠습니다", fromTier: "플레티넘 2", toTier: "마스터 5" },
+  { name: "god**", rating: 5, review: "피드백으로 오늘 본계도 다이아4에서 마스터 달성했습니다~ 감사합니다 제일 약했던 콜로세움으로 달성했네용", fromTier: "다이아 4", toTier: "마스터 3" },
+  { name: "수*", rating: 5, review: "독스님 피드백 받고 ㄹㅈㄷ 연승 하고 그마 찍었습니다", fromTier: "다이아 2", toTier: "그랜드마스터 5" },
+  { name: "채*", rating: 5, review: "마2강등 방어전에서부터 피드백 받고 그마5로 다시 승급했습니다. 피드백 받고 키리코 힐량도 늘고 아나로 데스도 적어진게 확실히 눈에 보입니다 감사합니다!", fromTier: "마스터 2", toTier: "그랜드마스터 5" },
 ];
 
 const PAGE_SIZE = 5;
@@ -88,6 +93,7 @@ function tierImageName(tier: string): string | null {
   if (tier.includes("그랜드마스터") || tier.includes("그마")) return "grandmaster";
   if (tier.includes("마스터")) return "master";
   if (tier.includes("다이아")) return "diamond";
+  if (tier.includes("에메랄드")) return "emerald";
   if (tier.includes("플래티넘") || tier.includes("플레")) return "platinum";
   if (tier.includes("골드")) return "gold";
   if (tier.includes("실버")) return "silver";
