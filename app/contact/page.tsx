@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useRef, useLayoutEffect } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { motion, useInView, AnimatePresence } from 'framer-motion'
 import GNB from '@/components/GNB'
 
 const WEBHOOK_URL = 'https://discord.com/api/webhooks/1503673199236223038/JnyZaZ0GVk5IGbRlRKEwlQjpxhKs_7Va-BNx1uJHQmgvyu5dx9V3gptvcWSZ97DCk0MB'
@@ -83,6 +83,7 @@ export default function ContactPage() {
       })
       if (!response.ok) throw new Error()
       setStatus('success')
+      setForm({ tier: '', lessonType: '', message: '', discordId: '' })
     } catch {
       setStatus('error')
     }
@@ -302,15 +303,6 @@ export default function ContactPage() {
                 </button>
 
                 {/* Status messages */}
-                {status === 'success' && (
-                  <motion.p
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="text-sm text-[#0066ff] text-center pt-1"
-                  >
-                    신청이 완료됐습니다! 24시간 내 디스코드로 연락드릴게요 😊
-                  </motion.p>
-                )}
                 {status === 'error' && (
                   <motion.p
                     initial={{ opacity: 0, y: 8 }}
@@ -325,6 +317,45 @@ export default function ContactPage() {
 
           </div>
         </div>
+
+        {/* Success popup */}
+        <AnimatePresence>
+          {status === 'success' && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4"
+              onClick={() => setStatus('idle')}
+            >
+              <motion.div
+                initial={{ opacity: 0, y: 16, scale: 0.96 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: 8, scale: 0.96 }}
+                transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+                onClick={(e) => e.stopPropagation()}
+                className="w-full max-w-sm bg-[#0d0f18] border border-[#0066ff]/40 px-8 py-10 text-center"
+                style={{
+                  clipPath: 'polygon(12px 0%,100% 0%,100% calc(100% - 12px),calc(100% - 12px) 100%,0% 100%,0% 12px)',
+                  boxShadow: '0 0 40px rgba(0,102,255,0.25)',
+                }}
+              >
+                <p className="text-base font-semibold text-white leading-relaxed">
+                  신청이 완료됐습니다!<br />24시간 내 디스코드로 연락드릴게요 😊
+                </p>
+                <button
+                  onClick={() => setStatus('idle')}
+                  className="mt-6 px-6 py-2 bg-[#0066ff] text-white text-xs font-black tracking-widest uppercase hover:bg-[#0052cc] transition-colors duration-200"
+                  style={{
+                    clipPath: 'polygon(6px 0%,100% 0%,100% calc(100% - 6px),calc(100% - 6px) 100%,0% 100%,0% 6px)',
+                  }}
+                >
+                  확인
+                </button>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </main>
     </>
   )
